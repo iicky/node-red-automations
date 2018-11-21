@@ -3767,9 +3767,9 @@
         "id": "7632d5b0.1e091c",
         "type": "comment",
         "z": "dc9e57a8.6747d8",
-        "name": "Are we home?",
+        "name": "Is anyone in the house?",
         "info": "",
-        "x": 110,
+        "x": 140,
         "y": 40,
         "wires": []
     },
