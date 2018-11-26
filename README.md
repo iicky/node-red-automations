@@ -1,9 +1,3 @@
-node-red-automations
-====================
+# My Node-RED Home Automations
 
-My Node-RED Home Automations
-
-### About
-
-This is your project's README.md file. It helps users understand what your
-project does, how to use it and anything else they may need to know.
+A repository for storing Node-RED flows for my home automations. I am using Node-RED alongside [Home Assistant](https://www.home-assistant.io/) and [Mosquitto](https://mosquitto.org/).
