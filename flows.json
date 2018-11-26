@@ -480,7 +480,7 @@
         "name": "Dohm Timer",
         "info": "",
         "x": 110,
-        "y": 40,
+        "y": 60,
         "wires": []
     },
     {
@@ -556,7 +556,7 @@
         "name": "Petcube Timer",
         "info": "",
         "x": 120,
-        "y": 180,
+        "y": 200,
         "wires": []
     },
     {
@@ -5087,7 +5087,7 @@
         "name": "Kitchen Grow Light Timer",
         "info": "",
         "x": 150,
-        "y": 340,
+        "y": 360,
         "wires": []
     },
     {
@@ -5807,7 +5807,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 440,
-        "y": 380,
+        "y": 360,
         "wires": [
             []
         ]
@@ -5823,7 +5823,7 @@
         "data": "{\"entity_id\": \"switch.grow_light\"}",
         "mergecontext": "",
         "x": 440,
-        "y": 420,
+        "y": 440,
         "wires": [
             []
         ]
@@ -5839,7 +5839,7 @@
         "data": "{\"entity_id\": \"switch.petcube\"}",
         "mergecontext": "",
         "x": 430,
-        "y": 260,
+        "y": 280,
         "wires": [
             []
         ]
@@ -5855,7 +5855,7 @@
         "data": "{\"entity_id\": \"switch.petcube\"}",
         "mergecontext": "",
         "x": 430,
-        "y": 220,
+        "y": 200,
         "wires": [
             []
         ]
@@ -5887,7 +5887,7 @@
         "data": "{\"entity_id\": \"switch.dohm\"}",
         "mergecontext": "",
         "x": 540,
-        "y": 80,
+        "y": 60,
         "wires": [
             []
         ]
