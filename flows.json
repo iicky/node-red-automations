@@ -4033,58 +4033,6 @@
         ]
     },
     {
-        "id": "a5c728e1.ad5ea8",
-        "type": "debug",
-        "z": "850c061.bcd9ef8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 500,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "63cbbc39.007134",
-        "type": "api-current-state",
-        "z": "850c061.bcd9ef8",
-        "name": "",
-        "server": "a117d285.11d84",
-        "halt_if": "",
-        "override_topic": true,
-        "override_payload": true,
-        "entity_id": "light.hoplite",
-        "x": 330,
-        "y": 1220,
-        "wires": [
-            [
-                "a5c728e1.ad5ea8"
-            ]
-        ]
-    },
-    {
-        "id": "fbcbd090.3d288",
-        "type": "inject",
-        "z": "850c061.bcd9ef8",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 100,
-        "y": 1220,
-        "wires": [
-            [
-                "63cbbc39.007134"
-            ]
-        ]
-    },
-    {
         "id": "923a691c.6bafd8",
         "type": "change",
         "z": "dc9e57a8.6747d8",
