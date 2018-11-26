@@ -1866,7 +1866,7 @@
         "override_topic": true,
         "override_payload": true,
         "entity_id": "switch.headboard",
-        "x": 1030,
+        "x": 970,
         "y": 40,
         "wires": [
             [
@@ -1884,7 +1884,7 @@
         "service": "turn_on",
         "data": "{\"entity_id\": \"switch.headboard\"}",
         "mergecontext": "",
-        "x": 1230,
+        "x": 1170,
         "y": 40,
         "wires": [
             []
@@ -1899,7 +1899,7 @@
         "payloadtype": "num",
         "payloadval": "0",
         "name": "10min",
-        "x": 1010,
+        "x": 950,
         "y": 100,
         "wires": [
             [
@@ -1918,7 +1918,7 @@
         "service": "turn_off",
         "data": "{\"entity_id\": \"switch.headboard\"}",
         "mergecontext": "",
-        "x": 1170,
+        "x": 1110,
         "y": 100,
         "wires": [
             []
