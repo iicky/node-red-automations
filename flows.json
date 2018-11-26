@@ -450,6 +450,7 @@
         "halt_if": "",
         "override_topic": true,
         "override_payload": true,
+        "override_data": true,
         "entity_id": "media_player.receiver",
         "x": 380,
         "y": 420,
@@ -1998,24 +1999,6 @@
         ]
     },
     {
-        "id": "b94cb487.1dcc58",
-        "type": "stoptimer",
-        "z": "997b60db.958c4",
-        "duration": "5",
-        "units": "Minute",
-        "payloadtype": "num",
-        "payloadval": "0",
-        "name": "5 min",
-        "x": 670,
-        "y": 320,
-        "wires": [
-            [
-                "c3563fbb.ff7c7"
-            ],
-            []
-        ]
-    },
-    {
         "id": "9e772518.f88288",
         "type": "api-call-service",
         "z": "997b60db.958c4",
@@ -2025,8 +2008,8 @@
         "service": "turn_off",
         "data": "{ \"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 1010,
-        "y": 300,
+        "x": 870,
+        "y": 320,
         "wires": [
             []
         ]
@@ -2049,7 +2032,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 840,
+        "x": 700,
         "y": 320,
         "wires": [
             [],
@@ -2154,8 +2137,8 @@
         "y": 300,
         "wires": [
             [
-                "b94cb487.1dcc58",
-                "95497aed.811d08"
+                "95497aed.811d08",
+                "c3563fbb.ff7c7"
             ]
         ]
     },
@@ -3626,7 +3609,7 @@
         "service": "turn_off",
         "data": "{ \"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 1000,
+        "x": 860,
         "y": 360,
         "wires": [
             []
@@ -4197,7 +4180,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 650,
+        "x": 480,
         "y": 360,
         "wires": [
             [
