@@ -2251,7 +2251,7 @@
             },
             {
                 "t": "eq",
-                "v": "tap",
+                "v": "fall",
                 "vt": "str"
             }
         ],
@@ -4511,7 +4511,7 @@
         "qos": "2",
         "broker": "44deb46d.8fe2ec",
         "x": 70,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "a518c335.24861"
@@ -4527,7 +4527,7 @@
         "action": "",
         "pretty": false,
         "x": 200,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "5488981d.22de08"
@@ -4551,19 +4551,35 @@
                 "t": "eq",
                 "v": "rotate_right",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "tap",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "slide",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 4,
         "x": 330,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "145c1f12.6fa431"
             ],
             [
                 "8b3bff9d.0d3e5"
+            ],
+            [
+                "6a473b37.d41684"
+            ],
+            [
+                "a86de5d0.a0f468"
             ]
         ]
     },
@@ -4578,8 +4594,8 @@
         "data": "{\"entity_id\":\"media_player.living_room\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 480,
-        "y": 120,
+        "x": 510,
+        "y": 100,
         "wires": [
             []
         ]
@@ -4595,7 +4611,7 @@
         "data": "{\"entity_id\":\"media_player.living_room\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 490,
+        "x": 500,
         "y": 40,
         "wires": [
             []
@@ -4608,7 +4624,113 @@
         "name": "Control Sonos with Cube",
         "info": "",
         "x": 130,
-        "y": 40,
+        "y": 80,
         "wires": []
+    },
+    {
+        "id": "a3275de1.8d8f2",
+        "type": "inject",
+        "z": "fb14b77d.472098",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 500,
+        "wires": [
+            [
+                "b2271cbc.6c34a"
+            ]
+        ]
+    },
+    {
+        "id": "b2271cbc.6c34a",
+        "type": "api-call-service",
+        "z": "fb14b77d.472098",
+        "name": "",
+        "server": "a117d285.11d84",
+        "service_domain": "tts",
+        "service": "google_say",
+        "data": "{\"entity_id\":\"media_player.living_room\",\"message\":\"Welcome home Michael!\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 400,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6a473b37.d41684",
+        "type": "function",
+        "z": "fb14b77d.472098",
+        "name": "Playlist?",
+        "func": "const playlist_map = {\n    '0': 'Discover Weekly',\n    '1': 'Daily Mix 1',\n    '2': 'Daily Mix 2',\n    '3': 'Daily Mix 3',\n    '4': 'Daily Mix 4',\n    '5': 'Daily Mix 5',\n};\n\nnode.status({text: playlist_map[msg.payload.side]});\n\nmsg.payload.data = {\n    \"entity_id\" : \"media_player.living_room\",\n    \"source\": playlist_map[msg.payload.side]\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 160,
+        "wires": [
+            [
+                "237c30a2.4cce7"
+            ]
+        ]
+    },
+    {
+        "id": "237c30a2.4cce7",
+        "type": "api-call-service",
+        "z": "fb14b77d.472098",
+        "name": "Select Source",
+        "server": "a117d285.11d84",
+        "service_domain": "media_player",
+        "service": "select_source",
+        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "4557d3ba.65e1ec"
+            ]
+        ]
+    },
+    {
+        "id": "4557d3ba.65e1ec",
+        "type": "api-call-service",
+        "z": "fb14b77d.472098",
+        "name": "Shuffle",
+        "server": "a117d285.11d84",
+        "service_domain": "media_player",
+        "service": "shuffle_set",
+        "data": "{\"entity_id\":\"media_player.living_room\",\"shuffle\":\"true\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 810,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a86de5d0.a0f468",
+        "type": "api-call-service",
+        "z": "fb14b77d.472098",
+        "name": "Pause",
+        "server": "a117d285.11d84",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 470,
+        "y": 220,
+        "wires": [
+            []
+        ]
     }
 ]
