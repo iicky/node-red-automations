@@ -4805,8 +4805,56 @@
         "x": 110,
         "y": 540,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1a37d17.aac25",
+        "type": "debug",
+        "z": "363f3bc3.b66854",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 880,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "cf652c4e.7aa1",
+        "type": "inject",
+        "z": "363f3bc3.b66854",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 640,
+        "y": 400,
+        "wires": [
             [
-                "6371a749.0abde8"
+                "fdc6addc.88e0e"
+            ]
+        ]
+    },
+    {
+        "id": "fdc6addc.88e0e",
+        "type": "function",
+        "z": "363f3bc3.b66854",
+        "name": "",
+        "func": "msg.payload = new Date();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "c1a37d17.aac25"
             ]
         ]
     }
