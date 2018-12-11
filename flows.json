@@ -1714,7 +1714,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\"state\":\"OFF\",\"color\":{\"r\":0,\"g\":0,\"b\":0},\"brightness\":100,\"speed\":60,\"effect\":\"solid\"}",
+        "template": "{\"state\":\"OFF\", \"speed\":60,\"effect\":\"solid\"}",
         "output": "json",
         "x": 690,
         "y": 360,
@@ -1798,7 +1798,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\"state\":\"OFF\",\"color\":{\"r\":0,\"g\":0,\"b\":0},\"brightness\":100,\"speed\":60,\"effect\":\"solid\"}",
+        "template": "{\"state\":\"OFF\", \"effect\":\"solid\"}",
         "output": "json",
         "x": 590,
         "y": 580,
@@ -4655,8 +4655,8 @@
         "data": "{\"entity_id\":\"media_player.living_room\",\"message\":\"Welcome home Michael!\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 260,
-        "y": 460,
+        "x": 520,
+        "y": 520,
         "wires": [
             []
         ]
@@ -4740,8 +4740,8 @@
         "data": "{\"entity_id\":\"media_player.living_room\",\"shuffle\":\"false\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 410,
-        "y": 380,
+        "x": 450,
+        "y": 360,
         "wires": [
             []
         ]
