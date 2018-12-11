@@ -4740,8 +4740,8 @@
         "data": "{\"entity_id\":\"media_player.living_room\",\"shuffle\":\"false\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 450,
-        "y": 360,
+        "x": 310,
+        "y": 380,
         "wires": [
             []
         ]
