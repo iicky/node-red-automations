@@ -4359,7 +4359,7 @@
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_on",
-        "data": "{\"entity_id\":\"switch.grow_light\"}",
+        "data": "{\"entity_id\":\"switch.kitchen_grow_light\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 440,
@@ -4376,7 +4376,8 @@
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_off",
-        "data": "{\"entity_id\": \"switch.grow_light\"}",
+        "data": "{\"entity_id\":\"switch.kitchen_grow_light\"}",
+        "render_data": false,
         "mergecontext": "",
         "x": 440,
         "y": 440,
@@ -4809,56 +4810,6 @@
         ]
     },
     {
-        "id": "c1a37d17.aac25",
-        "type": "debug",
-        "z": "363f3bc3.b66854",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 880,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "cf652c4e.7aa1",
-        "type": "inject",
-        "z": "363f3bc3.b66854",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 640,
-        "y": 400,
-        "wires": [
-            [
-                "fdc6addc.88e0e"
-            ]
-        ]
-    },
-    {
-        "id": "fdc6addc.88e0e",
-        "type": "function",
-        "z": "363f3bc3.b66854",
-        "name": "",
-        "func": "msg.payload = new Date();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 800,
-        "y": 420,
-        "wires": [
-            [
-                "c1a37d17.aac25"
-            ]
-        ]
-    },
-    {
         "id": "892864b4.aba438",
         "type": "alexa-home",
         "z": "7538960a.bfe8b8",
@@ -5023,6 +4974,90 @@
             ],
             [
                 "896a91f8.4190b"
+            ]
+        ]
+    },
+    {
+        "id": "d76a0f99.e4a5c",
+        "type": "alexa-home",
+        "z": "7538960a.bfe8b8",
+        "conf": "8a0c2cc0.358c6",
+        "device": "40912",
+        "acknoledge": true,
+        "name": "Star Light",
+        "topic": "",
+        "x": 680,
+        "y": 540,
+        "wires": [
+            [
+                "31d3b01b.026e5"
+            ]
+        ]
+    },
+    {
+        "id": "bf981689.35a868",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.star_light\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 990,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "835199d7.c41788",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.star_light\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 990,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31d3b01b.026e5",
+        "type": "switch",
+        "z": "7538960a.bfe8b8",
+        "name": "",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TurnOnRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TurnOffRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 540,
+        "wires": [
+            [
+                "bf981689.35a868"
+            ],
+            [
+                "835199d7.c41788"
             ]
         ]
     }
