@@ -1873,7 +1873,7 @@
         "override_topic": true,
         "override_payload": true,
         "entity_id": "switch.headboard",
-        "x": 970,
+        "x": 1050,
         "y": 40,
         "wires": [
             [
@@ -1891,7 +1891,7 @@
         "service": "turn_on",
         "data": "{\"entity_id\": \"switch.headboard\"}",
         "mergecontext": "",
-        "x": 1170,
+        "x": 1210,
         "y": 40,
         "wires": [
             []
@@ -1925,7 +1925,7 @@
         "service": "turn_off",
         "data": "{\"entity_id\": \"switch.headboard\"}",
         "mergecontext": "",
-        "x": 1110,
+        "x": 1190,
         "y": 100,
         "wires": [
             []
@@ -1970,26 +1970,6 @@
         ]
     },
     {
-        "id": "95497aed.811d08",
-        "type": "api-current-state",
-        "z": "997b60db.958c4",
-        "name": "Already on?",
-        "server": "a117d285.11d84",
-        "halt_if": "on",
-        "override_topic": true,
-        "override_payload": true,
-        "override_data": true,
-        "entity_id": "switch.star_light",
-        "x": 690,
-        "y": 260,
-        "wires": [
-            [
-                "85436fe2.b223c",
-                "5eb7d903.756668"
-            ]
-        ]
-    },
-    {
         "id": "85436fe2.b223c",
         "type": "api-call-service",
         "z": "997b60db.958c4",
@@ -1999,7 +1979,7 @@
         "service": "turn_on",
         "data": "{ \"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 870,
+        "x": 730,
         "y": 200,
         "wires": [
             []
@@ -2015,8 +1995,8 @@
         "service": "turn_off",
         "data": "{ \"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 870,
-        "y": 320,
+        "x": 990,
+        "y": 340,
         "wires": [
             []
         ]
@@ -2044,8 +2024,7 @@
         "wires": [
             [],
             [
-                "9e772518.f88288",
-                "d7f28811.78e198"
+                "d0eba56e.f44ce8"
             ]
         ]
     },
@@ -2060,8 +2039,8 @@
         "endTime": "22:00",
         "startOffset": "",
         "endOffset": "",
-        "x": 770,
-        "y": 40,
+        "x": 750,
+        "y": 20,
         "wires": [
             [
                 "9c83d9dd.b5b388",
@@ -2144,8 +2123,9 @@
         "y": 300,
         "wires": [
             [
-                "95497aed.811d08",
-                "c3563fbb.ff7c7"
+                "c3563fbb.ff7c7",
+                "5eb7d903.756668",
+                "85436fe2.b223c"
             ]
         ]
     },
@@ -3600,7 +3580,7 @@
         "service": "turn_on",
         "data": "{ \"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 860,
+        "x": 720,
         "y": 260,
         "wires": [
             []
@@ -3616,8 +3596,8 @@
         "service": "turn_off",
         "data": "{ \"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 860,
-        "y": 380,
+        "x": 1040,
+        "y": 400,
         "wires": [
             []
         ]
@@ -5058,6 +5038,141 @@
             ],
             [
                 "835199d7.c41788"
+            ]
+        ]
+    },
+    {
+        "id": "d0eba56e.f44ce8",
+        "type": "delay",
+        "z": "997b60db.958c4",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 780,
+        "y": 380,
+        "wires": [
+            [
+                "3b931498.caf53c"
+            ]
+        ]
+    },
+    {
+        "id": "3b931498.caf53c",
+        "type": "switch",
+        "z": "997b60db.958c4",
+        "name": "Anyone home?",
+        "property": "anyone_home_plus_guests",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 860,
+        "y": 440,
+        "wires": [
+            [],
+            [
+                "d7f28811.78e198",
+                "9e772518.f88288"
+            ]
+        ]
+    },
+    {
+        "id": "e84cfada.634608",
+        "type": "alexa-home",
+        "z": "7538960a.bfe8b8",
+        "conf": "8a0c2cc0.358c6",
+        "device": "43307",
+        "acknoledge": true,
+        "name": "Candles",
+        "topic": "",
+        "x": 840,
+        "y": 680,
+        "wires": [
+            [
+                "b1ba568c.827358"
+            ]
+        ]
+    },
+    {
+        "id": "69d4381.02192c8",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.candles\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1150,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f13d783f.e82e98",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.candles\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1150,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b1ba568c.827358",
+        "type": "switch",
+        "z": "7538960a.bfe8b8",
+        "name": "",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TurnOnRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TurnOffRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1010,
+        "y": 680,
+        "wires": [
+            [
+                "69d4381.02192c8"
+            ],
+            [
+                "f13d783f.e82e98"
             ]
         ]
     }
