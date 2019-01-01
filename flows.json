@@ -49,6 +49,13 @@
         "info": ""
     },
     {
+        "id": "7a870af1.025c84",
+        "type": "tab",
+        "label": "LCD 1602",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "6b041d7.60aaee4",
         "type": "subflow",
         "name": "Blink Hoplite Yellow",
@@ -4636,8 +4643,8 @@
         "data": "{\"entity_id\":\"media_player.living_room\",\"message\":\"Welcome home Michael!\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 520,
-        "y": 520,
+        "x": 540,
+        "y": 460,
         "wires": [
             []
         ]
@@ -5175,5 +5182,359 @@
                 "f13d783f.e82e98"
             ]
         ]
+    },
+    {
+        "id": "3240c087.b1f9e",
+        "type": "comment",
+        "z": "997b60db.958c4",
+        "name": "Turn on flame candles",
+        "info": "",
+        "x": 160,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "eda9fda3.26e68",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.flames\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 950,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "968852ea.eee37",
+        "type": "stoptimer",
+        "z": "997b60db.958c4",
+        "duration": "10",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "10min",
+        "x": 950,
+        "y": 760,
+        "wires": [
+            [
+                "64bbda3f.cfd5a4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "64bbda3f.cfd5a4",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.off\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1090,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d685464a.c0db78",
+        "type": "time-range-switch",
+        "z": "997b60db.958c4",
+        "name": "9pm - 11pm",
+        "lat": "40.7799",
+        "lon": "-73.94872",
+        "startTime": "21:00",
+        "endTime": "23:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 770,
+        "y": 760,
+        "wires": [
+            [
+                "968852ea.eee37",
+                "eda9fda3.26e68"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "1c820486.b6420b",
+        "type": "time-range-switch",
+        "z": "997b60db.958c4",
+        "name": "9pm - 10pm",
+        "lat": "40.7799",
+        "lon": "-73.94872",
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "startOffset": "",
+        "endOffset": "",
+        "x": 750,
+        "y": 680,
+        "wires": [
+            [
+                "968852ea.eee37",
+                "eda9fda3.26e68"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2f2247cb.1b9db8",
+        "type": "weekday",
+        "z": "997b60db.958c4",
+        "name": "Weekday?",
+        "sun": true,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": false,
+        "sat": false,
+        "x": 590,
+        "y": 740,
+        "wires": [
+            [
+                "1c820486.b6420b"
+            ],
+            [
+                "d685464a.c0db78"
+            ]
+        ]
+    },
+    {
+        "id": "8c6ff580.12efd8",
+        "type": "mqtt in",
+        "z": "997b60db.958c4",
+        "name": "Bedroom Motion",
+        "topic": "zigbee2mqtt/bedroom_motion_sensor",
+        "qos": "0",
+        "broker": "44deb46d.8fe2ec",
+        "x": 140,
+        "y": 740,
+        "wires": [
+            [
+                "9e7bde7a.cdfeb"
+            ]
+        ]
+    },
+    {
+        "id": "9e7bde7a.cdfeb",
+        "type": "json",
+        "z": "997b60db.958c4",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 290,
+        "y": 740,
+        "wires": [
+            [
+                "beccc159.f2fa2"
+            ]
+        ]
+    },
+    {
+        "id": "beccc159.f2fa2",
+        "type": "switch",
+        "z": "997b60db.958c4",
+        "name": "Motion?",
+        "property": "payload.occupancy",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 740,
+        "wires": [
+            [
+                "2f2247cb.1b9db8"
+            ]
+        ]
+    },
+    {
+        "id": "8147370c.6f7858",
+        "type": "mqtt out",
+        "z": "7a870af1.025c84",
+        "name": "LCD",
+        "topic": "lcd_1602/set",
+        "qos": "1",
+        "retain": "false",
+        "broker": "44deb46d.8fe2ec",
+        "x": 570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "9172d8c9.d33118",
+        "type": "function",
+        "z": "7a870af1.025c84",
+        "name": "Display track",
+        "func": "msg.payload = {\n    \"display\": \"on\",\n    \"line1\": msg.data.new_state.attributes.media_artist,\n    \"line2\": msg.data.new_state.attributes.media_title\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [
+                "e6d7a647.3b0828",
+                "42408f6d.69534"
+            ]
+        ]
+    },
+    {
+        "id": "fe3e8ddc.1895b",
+        "type": "server-state-changed",
+        "z": "7a870af1.025c84",
+        "name": "Sonos",
+        "server": "a117d285.11d84",
+        "entityidfilter": "media_player.living_room",
+        "entityidfiltertype": "substring",
+        "haltifstate": "",
+        "outputinitially": false,
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "d5034c39.ddde"
+            ]
+        ]
+    },
+    {
+        "id": "3eef5286.4ea60e",
+        "type": "comment",
+        "z": "7a870af1.025c84",
+        "name": "Display current music",
+        "info": "",
+        "x": 200,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d5034c39.ddde",
+        "type": "switch",
+        "z": "7a870af1.025c84",
+        "name": "State?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "playing",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "paused",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 80,
+        "wires": [
+            [
+                "9172d8c9.d33118"
+            ],
+            [
+                "2ebc06e5.82ed2a"
+            ]
+        ]
+    },
+    {
+        "id": "2ebc06e5.82ed2a",
+        "type": "function",
+        "z": "7a870af1.025c84",
+        "name": "Turn Off Display",
+        "func": "msg.payload = {\n    \"display\": \"off\",\n    \"line1\": \"\",\n    \"line2\": \"\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "8147370c.6f7858"
+            ]
+        ]
+    },
+    {
+        "id": "e6d7a647.3b0828",
+        "type": "delay",
+        "z": "7a870af1.025c84",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 580,
+        "y": 60,
+        "wires": [
+            [
+                "43e9f87d.680368"
+            ]
+        ]
+    },
+    {
+        "id": "43e9f87d.680368",
+        "type": "function",
+        "z": "7a870af1.025c84",
+        "name": "Turn Off Light",
+        "func": "msg.payload = {\n    \"display\": \"off\",\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740,
+        "y": 60,
+        "wires": [
+            [
+                "903b30cb.7dc83"
+            ]
+        ]
+    },
+    {
+        "id": "42408f6d.69534",
+        "type": "mqtt out",
+        "z": "7a870af1.025c84",
+        "name": "LCD",
+        "topic": "lcd_1602/set",
+        "qos": "1",
+        "retain": "false",
+        "broker": "44deb46d.8fe2ec",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "903b30cb.7dc83",
+        "type": "mqtt out",
+        "z": "7a870af1.025c84",
+        "name": "LCD",
+        "topic": "lcd_1602/set",
+        "qos": "1",
+        "retain": "false",
+        "broker": "44deb46d.8fe2ec",
+        "x": 890,
+        "y": 60,
+        "wires": []
     }
 ]
