@@ -5373,11 +5373,12 @@
         "func": "msg.payload = {\n    \"display\": \"on\",\n    \"line1\": msg.data.new_state.attributes.media_artist,\n    \"line2\": msg.data.new_state.attributes.media_title\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
-        "y": 40,
+        "x": 510,
+        "y": 80,
         "wires": [
             [
-                "42408f6d.69534"
+                "42408f6d.69534",
+                "39ae09cc.e570f6"
             ]
         ]
     },
@@ -5391,8 +5392,8 @@
         "entityidfiltertype": "substring",
         "haltifstate": "",
         "outputinitially": false,
-        "x": 150,
-        "y": 80,
+        "x": 110,
+        "y": 120,
         "wires": [
             [
                 "d5034c39.ddde"
@@ -5405,8 +5406,8 @@
         "z": "7a870af1.025c84",
         "name": "Display current music",
         "info": "",
-        "x": 200,
-        "y": 40,
+        "x": 160,
+        "y": 80,
         "wires": []
     },
     {
@@ -5431,8 +5432,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 270,
-        "y": 80,
+        "x": 230,
+        "y": 120,
         "wires": [
             [
                 "cdaf7927.735498"
@@ -5450,11 +5451,12 @@
         "func": "msg.payload = {\n    \"display\": \"off\",\n    \"line1\": \"\",\n    \"line2\": \"\"\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 560,
-        "y": 100,
+        "x": 520,
+        "y": 140,
         "wires": [
             [
-                "42408f6d.69534"
+                "42408f6d.69534",
+                "39ae09cc.e570f6"
             ]
         ]
     },
@@ -5468,7 +5470,7 @@
         "retain": "false",
         "broker": "44deb46d.8fe2ec",
         "x": 730,
-        "y": 60,
+        "y": 80,
         "wires": []
     },
     {
@@ -5491,8 +5493,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 400,
-        "y": 60,
+        "x": 360,
+        "y": 100,
         "wires": [
             [
                 "9172d8c9.d33118"
@@ -5500,6 +5502,31 @@
             [
                 "2ebc06e5.82ed2a"
             ]
+        ]
+    },
+    {
+        "id": "39ae09cc.e570f6",
+        "type": "change",
+        "z": "7a870af1.025c84",
+        "name": "Set Base",
+        "rules": [
+            {
+                "t": "set",
+                "p": "base_message",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 140,
+        "wires": [
+            []
         ]
     }
 ]
