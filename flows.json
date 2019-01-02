@@ -5528,5 +5528,116 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "e162881c.9e8208",
+        "type": "server-state-changed",
+        "z": "7a870af1.025c84",
+        "name": "Magic Cube",
+        "server": "a117d285.11d84",
+        "entityidfilter": "sensor.magic_cube",
+        "entityidfiltertype": "substring",
+        "haltifstate": "",
+        "outputinitially": false,
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "2fceafea.97eef"
+            ]
+        ]
+    },
+    {
+        "id": "2fceafea.97eef",
+        "type": "function",
+        "z": "7a870af1.025c84",
+        "name": "Display action",
+        "func": "msg.payload = {\n    \"display\": \"on\",\n    \"line1\": msg.payload,\n    \"line2\": ''\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "71852f99.a11b",
+                "506be167.07f73"
+            ]
+        ]
+    },
+    {
+        "id": "71852f99.a11b",
+        "type": "mqtt out",
+        "z": "7a870af1.025c84",
+        "name": "LCD",
+        "topic": "lcd_1602/set",
+        "qos": "1",
+        "retain": "false",
+        "broker": "44deb46d.8fe2ec",
+        "x": 450,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "506be167.07f73",
+        "type": "delay",
+        "z": "7a870af1.025c84",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "5eb912f4.7a0ffc"
+            ]
+        ]
+    },
+    {
+        "id": "5eb912f4.7a0ffc",
+        "type": "change",
+        "z": "7a870af1.025c84",
+        "name": "Retreive Base",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "base_message",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "937a95a8.5cbc58"
+            ]
+        ]
+    },
+    {
+        "id": "937a95a8.5cbc58",
+        "type": "mqtt out",
+        "z": "7a870af1.025c84",
+        "name": "LCD",
+        "topic": "lcd_1602/set",
+        "qos": "1",
+        "retain": "false",
+        "broker": "44deb46d.8fe2ec",
+        "x": 770,
+        "y": 320,
+        "wires": []
     }
 ]
