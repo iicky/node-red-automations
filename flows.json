@@ -5366,19 +5366,6 @@
         ]
     },
     {
-        "id": "8147370c.6f7858",
-        "type": "mqtt out",
-        "z": "7a870af1.025c84",
-        "name": "LCD",
-        "topic": "lcd_1602/set",
-        "qos": "1",
-        "retain": "false",
-        "broker": "44deb46d.8fe2ec",
-        "x": 570,
-        "y": 160,
-        "wires": []
-    },
-    {
         "id": "9172d8c9.d33118",
         "type": "function",
         "z": "7a870af1.025c84",
@@ -5386,11 +5373,10 @@
         "func": "msg.payload = {\n    \"display\": \"on\",\n    \"line1\": msg.data.new_state.attributes.media_artist,\n    \"line2\": msg.data.new_state.attributes.media_title\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 430,
+        "x": 410,
         "y": 60,
         "wires": [
             [
-                "e6d7a647.3b0828",
                 "42408f6d.69534"
             ]
         ]
@@ -5460,54 +5446,15 @@
         "id": "2ebc06e5.82ed2a",
         "type": "function",
         "z": "7a870af1.025c84",
-        "name": "Turn Off Display",
+        "name": "Turn off display",
         "func": "msg.payload = {\n    \"display\": \"off\",\n    \"line1\": \"\",\n    \"line2\": \"\"\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 420,
-        "y": 160,
+        "y": 100,
         "wires": [
             [
-                "8147370c.6f7858"
-            ]
-        ]
-    },
-    {
-        "id": "e6d7a647.3b0828",
-        "type": "delay",
-        "z": "7a870af1.025c84",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "15",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 580,
-        "y": 60,
-        "wires": [
-            [
-                "43e9f87d.680368"
-            ]
-        ]
-    },
-    {
-        "id": "43e9f87d.680368",
-        "type": "function",
-        "z": "7a870af1.025c84",
-        "name": "Turn Off Light",
-        "func": "msg.payload = {\n    \"display\": \"off\",\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 740,
-        "y": 60,
-        "wires": [
-            [
-                "903b30cb.7dc83"
+                "42408f6d.69534"
             ]
         ]
     },
@@ -5520,21 +5467,8 @@
         "qos": "1",
         "retain": "false",
         "broker": "44deb46d.8fe2ec",
-        "x": 570,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "903b30cb.7dc83",
-        "type": "mqtt out",
-        "z": "7a870af1.025c84",
-        "name": "LCD",
-        "topic": "lcd_1602/set",
-        "qos": "1",
-        "retain": "false",
-        "broker": "44deb46d.8fe2ec",
-        "x": 890,
-        "y": 60,
+        "x": 590,
+        "y": 80,
         "wires": []
     }
 ]
