@@ -5373,11 +5373,10 @@
         "func": "msg.payload = {\n    \"display\": \"on\",\n    \"line1\": msg.data.new_state.attributes.media_artist,\n    \"line2\": msg.data.new_state.attributes.media_title\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
+        "x": 810,
         "y": 80,
         "wires": [
             [
-                "42408f6d.69534",
                 "39ae09cc.e570f6"
             ]
         ]
@@ -5439,7 +5438,7 @@
                 "cdaf7927.735498"
             ],
             [
-                "2ebc06e5.82ed2a"
+                "c1b89b2c.ea2318"
             ]
         ]
     },
@@ -5451,12 +5450,11 @@
         "func": "msg.payload = {\n    \"display\": \"off\",\n    \"line1\": \"\",\n    \"line2\": \"\"\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 520,
-        "y": 140,
+        "x": 680,
+        "y": 180,
         "wires": [
             [
-                "42408f6d.69534",
-                "39ae09cc.e570f6"
+                "f1b61407.85ed18"
             ]
         ]
     },
@@ -5469,7 +5467,7 @@
         "qos": "1",
         "retain": "false",
         "broker": "44deb46d.8fe2ec",
-        "x": 730,
+        "x": 1090,
         "y": 80,
         "wires": []
     },
@@ -5497,10 +5495,10 @@
         "y": 100,
         "wires": [
             [
-                "9172d8c9.d33118"
+                "a5ed6f44.900bc"
             ],
             [
-                "2ebc06e5.82ed2a"
+                "c1b89b2c.ea2318"
             ]
         ]
     },
@@ -5523,10 +5521,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 140,
+        "x": 960,
+        "y": 80,
         "wires": [
-            []
+            [
+                "42408f6d.69534"
+            ]
         ]
     },
     {
@@ -5537,13 +5537,14 @@
         "server": "a117d285.11d84",
         "entityidfilter": "sensor.magic_cube",
         "entityidfiltertype": "substring",
-        "haltifstate": "",
+        "haltifstate": "wakeup",
         "outputinitially": false,
         "x": 130,
-        "y": 280,
+        "y": 260,
         "wires": [
             [
-                "2fceafea.97eef"
+                "2fceafea.97eef",
+                "32bd9cfa.0b6144"
             ]
         ]
     },
@@ -5583,7 +5584,7 @@
         "z": "7a870af1.025c84",
         "name": "",
         "pauseType": "delay",
-        "timeout": "10",
+        "timeout": "5",
         "timeoutUnits": "seconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -5638,6 +5639,151 @@
         "broker": "44deb46d.8fe2ec",
         "x": 770,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "a5ed6f44.900bc",
+        "type": "switch",
+        "z": "7a870af1.025c84",
+        "name": "Is Change?",
+        "property": "data.new_state.attributes.media_content_type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "data.old_state.attributes.media_title",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 80,
+        "wires": [
+            [
+                "34586e57.be6232"
+            ]
+        ]
+    },
+    {
+        "id": "ee9728af.d28788",
+        "type": "mqtt out",
+        "z": "7a870af1.025c84",
+        "name": "LCD",
+        "topic": "lcd_1602/set",
+        "qos": "1",
+        "retain": "false",
+        "broker": "44deb46d.8fe2ec",
+        "x": 970,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f1b61407.85ed18",
+        "type": "change",
+        "z": "7a870af1.025c84",
+        "name": "Set Base",
+        "rules": [
+            {
+                "t": "set",
+                "p": "base_message",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 180,
+        "wires": [
+            [
+                "ee9728af.d28788"
+            ]
+        ]
+    },
+    {
+        "id": "34586e57.be6232",
+        "type": "delay",
+        "z": "7a870af1.025c84",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 660,
+        "y": 80,
+        "wires": [
+            [
+                "9172d8c9.d33118"
+            ]
+        ]
+    },
+    {
+        "id": "c1b89b2c.ea2318",
+        "type": "delay",
+        "z": "7a870af1.025c84",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "2ebc06e5.82ed2a"
+            ]
+        ]
+    },
+    {
+        "id": "75a8f9af.d458f8",
+        "type": "comment",
+        "z": "7a870af1.025c84",
+        "name": "Pause or no music",
+        "info": "",
+        "x": 550,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "3b6714d3.1b6fcc",
+        "type": "comment",
+        "z": "7a870af1.025c84",
+        "name": "Track Change",
+        "info": "",
+        "x": 510,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "32bd9cfa.0b6144",
+        "type": "debug",
+        "z": "7a870af1.025c84",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 320,
+        "y": 360,
         "wires": []
     }
 ]
