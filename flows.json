@@ -4275,9 +4275,7 @@
         "x": 110,
         "y": 760,
         "wires": [
-            [
-                "4777f77.a538f08"
-            ]
+            []
         ]
     },
     {
@@ -5373,7 +5371,7 @@
         "func": "msg.payload = {\n    \"display\": \"on\",\n    \"line1\": msg.data.new_state.attributes.media_artist,\n    \"line2\": msg.data.new_state.attributes.media_title\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 810,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -5438,7 +5436,7 @@
                 "cdaf7927.735498"
             ],
             [
-                "c1b89b2c.ea2318"
+                "2ebc06e5.82ed2a"
             ]
         ]
     },
@@ -5467,7 +5465,7 @@
         "qos": "1",
         "retain": "false",
         "broker": "44deb46d.8fe2ec",
-        "x": 1090,
+        "x": 950,
         "y": 80,
         "wires": []
     },
@@ -5498,7 +5496,7 @@
                 "a5ed6f44.900bc"
             ],
             [
-                "c1b89b2c.ea2318"
+                "2ebc06e5.82ed2a"
             ]
         ]
     },
@@ -5521,7 +5519,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 960,
+        "x": 820,
         "y": 80,
         "wires": [
             [
@@ -5542,10 +5540,7 @@
         "x": 130,
         "y": 260,
         "wires": [
-            [
-                "2fceafea.97eef",
-                "32bd9cfa.0b6144"
-            ]
+            []
         ]
     },
     {
@@ -5646,7 +5641,7 @@
         "type": "switch",
         "z": "7a870af1.025c84",
         "name": "Is Change?",
-        "property": "data.new_state.attributes.media_content_type",
+        "property": "data.new_state.attributes.media_title",
         "propertyType": "msg",
         "rules": [
             {
@@ -5662,7 +5657,7 @@
         "y": 80,
         "wires": [
             [
-                "34586e57.be6232"
+                "9172d8c9.d33118"
             ]
         ]
     },
@@ -5707,58 +5702,12 @@
         ]
     },
     {
-        "id": "34586e57.be6232",
-        "type": "delay",
-        "z": "7a870af1.025c84",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 660,
-        "y": 80,
-        "wires": [
-            [
-                "9172d8c9.d33118"
-            ]
-        ]
-    },
-    {
-        "id": "c1b89b2c.ea2318",
-        "type": "delay",
-        "z": "7a870af1.025c84",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 520,
-        "y": 180,
-        "wires": [
-            [
-                "2ebc06e5.82ed2a"
-            ]
-        ]
-    },
-    {
         "id": "75a8f9af.d458f8",
         "type": "comment",
         "z": "7a870af1.025c84",
         "name": "Pause or no music",
         "info": "",
-        "x": 550,
+        "x": 690,
         "y": 140,
         "wires": []
     },
@@ -5773,17 +5722,113 @@
         "wires": []
     },
     {
-        "id": "32bd9cfa.0b6144",
-        "type": "debug",
-        "z": "7a870af1.025c84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 320,
-        "y": 360,
+        "id": "bae84cd9.42ee7",
+        "type": "switch",
+        "z": "363f3bc3.b66854",
+        "name": "Switch",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ON",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 250,
+        "y": 960,
+        "wires": [
+            [
+                "55e0f8b4.ea5be8"
+            ],
+            [
+                "d3ce3cf2.5f20e"
+            ]
+        ]
+    },
+    {
+        "id": "c0106401.256268",
+        "type": "schedex",
+        "z": "363f3bc3.b66854",
+        "name": "Timer",
+        "suspended": false,
+        "lat": "40.791",
+        "lon": "-73.9256",
+        "ontime": "00:00",
+        "ontopic": "payload",
+        "onpayload": "ON",
+        "onoffset": 0,
+        "onrandomoffset": 0,
+        "offtime": "07:30",
+        "offtopic": "payload",
+        "offpayload": "OFF",
+        "offoffset": 0,
+        "offrandomoffset": 0,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "sun": true,
+        "x": 90,
+        "y": 960,
+        "wires": [
+            [
+                "bae84cd9.42ee7"
+            ]
+        ]
+    },
+    {
+        "id": "dc0edde4.95aeb",
+        "type": "comment",
+        "z": "363f3bc3.b66854",
+        "name": "Oatmeal Timer",
+        "info": "",
+        "x": 120,
+        "y": 920,
         "wires": []
+    },
+    {
+        "id": "d3ce3cf2.5f20e",
+        "type": "api-call-service",
+        "z": "363f3bc3.b66854",
+        "name": "Oatmeal Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.soldering_iron\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 430,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55e0f8b4.ea5be8",
+        "type": "api-call-service",
+        "z": "363f3bc3.b66854",
+        "name": "Oatmeal On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.soldering_iron\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 430,
+        "y": 920,
+        "wires": [
+            []
+        ]
     }
 ]
