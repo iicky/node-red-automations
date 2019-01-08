@@ -4263,22 +4263,6 @@
         ]
     },
     {
-        "id": "65cbe8fe.b5f108",
-        "type": "poll-state",
-        "z": "363f3bc3.b66854",
-        "name": "Soldering Iron",
-        "server": "a117d285.11d84",
-        "updateinterval": "10",
-        "outputinitially": true,
-        "outputonchanged": true,
-        "entity_id": "switch.soldering_iron",
-        "x": 110,
-        "y": 760,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "4777f77.a538f08",
         "type": "switch",
         "z": "363f3bc3.b66854",
@@ -4791,7 +4775,9 @@
         "x": 110,
         "y": 540,
         "wires": [
-            []
+            [
+                "6371a749.0abde8"
+            ]
         ]
     },
     {
@@ -5801,11 +5787,11 @@
         "id": "d3ce3cf2.5f20e",
         "type": "api-call-service",
         "z": "363f3bc3.b66854",
-        "name": "Oatmeal Off",
+        "name": "Crockpot Off",
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_off",
-        "data": "{\"entity_id\":\"switch.soldering_iron\"}",
+        "data": "{\"entity_id\":\"switch.crockpot\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 430,
@@ -5818,11 +5804,11 @@
         "id": "55e0f8b4.ea5be8",
         "type": "api-call-service",
         "z": "363f3bc3.b66854",
-        "name": "Oatmeal On",
+        "name": "Crockpot On",
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_on",
-        "data": "{\"entity_id\":\"switch.soldering_iron\"}",
+        "data": "{\"entity_id\":\"switch.crockpot\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 430,
