@@ -6010,5 +6010,89 @@
                 "bc916483.b20948"
             ]
         ]
+    },
+    {
+        "id": "818ce4f9.8f6e58",
+        "type": "alexa-home",
+        "z": "7538960a.bfe8b8",
+        "conf": "8a0c2cc0.358c6",
+        "device": "45926",
+        "acknoledge": true,
+        "name": "Flames",
+        "topic": "",
+        "x": 830,
+        "y": 800,
+        "wires": [
+            [
+                "15887c56.e36924"
+            ]
+        ]
+    },
+    {
+        "id": "9bde166c.077768",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.flames\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1150,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4aa0d7e.4d3bb",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.flames\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1150,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15887c56.e36924",
+        "type": "switch",
+        "z": "7538960a.bfe8b8",
+        "name": "",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TurnOnRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TurnOffRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1010,
+        "y": 800,
+        "wires": [
+            [
+                "9bde166c.077768"
+            ],
+            [
+                "a4aa0d7e.4d3bb"
+            ]
+        ]
     }
 ]
