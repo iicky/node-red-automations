@@ -5753,7 +5753,7 @@
         "onpayload": "ON",
         "onoffset": 0,
         "onrandomoffset": 0,
-        "offtime": "07:30",
+        "offtime": "08:00",
         "offtopic": "payload",
         "offpayload": "OFF",
         "offoffset": 0,
