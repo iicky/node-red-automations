@@ -1959,14 +1959,14 @@
         "id": "4d46c426.a97b7c",
         "type": "time-range-switch",
         "z": "997b60db.958c4",
-        "name": "6pm - 11pm",
+        "name": "Sunset - 11pm",
         "lat": "40.7799",
         "lon": "-73.94872",
-        "startTime": "18:00",
+        "startTime": "sunset",
         "endTime": "23:00",
         "startOffset": 0,
         "endOffset": 0,
-        "x": 770,
+        "x": 780,
         "y": 100,
         "wires": [
             [
@@ -2039,14 +2039,14 @@
         "id": "f967442c.b94d18",
         "type": "time-range-switch",
         "z": "997b60db.958c4",
-        "name": "6pm - 10pm",
+        "name": "Sunset - 10pm",
         "lat": "40.7799",
         "lon": "-73.94872",
-        "startTime": "18:00",
+        "startTime": "sunset",
         "endTime": "22:00",
         "startOffset": "",
         "endOffset": "",
-        "x": 750,
+        "x": 760,
         "y": 20,
         "wires": [
             [
@@ -4483,9 +4483,7 @@
         "x": 130,
         "y": 200,
         "wires": [
-            [
-                "a518c335.24861"
-            ]
+            []
         ]
     },
     {
