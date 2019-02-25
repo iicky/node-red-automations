@@ -1880,7 +1880,7 @@
         "override_topic": true,
         "override_payload": true,
         "entity_id": "switch.headboard",
-        "x": 1070,
+        "x": 1250,
         "y": 60,
         "wires": [
             [
@@ -1899,7 +1899,7 @@
         "data": "{\"entity_id\":\"switch.headboard\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1260,
+        "x": 1440,
         "y": 60,
         "wires": [
             []
@@ -1914,7 +1914,7 @@
         "payloadtype": "num",
         "payloadval": "0",
         "name": "10min",
-        "x": 1030,
+        "x": 1210,
         "y": 193,
         "wires": [
             [
@@ -1935,7 +1935,7 @@
         "data": "{\"entity_id\":\"switch.headboard\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1200,
+        "x": 1380,
         "y": 260,
         "wires": [
             []
@@ -1969,7 +1969,7 @@
         "endTime": "23:00",
         "startOffset": 0,
         "endOffset": 0,
-        "x": 760,
+        "x": 940,
         "y": 193,
         "wires": [
             [
@@ -2050,7 +2050,7 @@
         "endTime": "22:00",
         "startOffset": "",
         "endOffset": "",
-        "x": 760,
+        "x": 940,
         "y": 100,
         "wires": [
             [
@@ -2073,7 +2073,7 @@
         "thu": true,
         "fri": false,
         "sat": false,
-        "x": 590,
+        "x": 750,
         "y": 160,
         "wires": [
             [
@@ -2192,7 +2192,7 @@
         "y": 160,
         "wires": [
             [
-                "48ecd7d8.c630d8"
+                "9151ae61.0ba7b"
             ]
         ]
     },
@@ -6441,7 +6441,7 @@
         "data": "{\"entity_id\":\"light.fairy_lights\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1200,
+        "x": 1380,
         "y": 193,
         "wires": [
             []
@@ -6458,7 +6458,7 @@
         "override_payload": true,
         "override_data": true,
         "entity_id": "light.fairy_lights",
-        "x": 1070,
+        "x": 1250,
         "y": 120,
         "wires": [
             [
@@ -6477,10 +6477,29 @@
         "data": "{\"entity_id\":\"light.fairy_lights\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1260,
+        "x": 1440,
         "y": 120,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "9151ae61.0ba7b",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Motion toggle?",
+        "server": "a117d285.11d84",
+        "halt_if": "OFF",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "switch.bedroom_motion_toggle",
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "48ecd7d8.c630d8"
+            ]
         ]
     }
 ]
