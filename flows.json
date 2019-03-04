@@ -6442,7 +6442,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 1380,
-        "y": 193,
+        "y": 200,
         "wires": [
             []
         ]
@@ -6474,7 +6474,7 @@
         "server": "a117d285.11d84",
         "service_domain": "light",
         "service": "turn_on",
-        "data": "{\"entity_id\":\"light.fairy_lights\"}",
+        "data": "{\"entity_id\":\"light.fairy_lights\",\"effect\":\"solid\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 1440,
