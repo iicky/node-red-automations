@@ -6573,5 +6573,42 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "f72850de.cfb75",
+        "type": "inject",
+        "z": "997b60db.958c4",
+        "name": "9:00am",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "00 09 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "fe57dc49.14f17"
+            ]
+        ]
+    },
+    {
+        "id": "fe57dc49.14f17",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "Bedroom Motion Toggle",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.bedroom_motion_toggle\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 310,
+        "y": 220,
+        "wires": [
+            []
+        ]
     }
 ]
