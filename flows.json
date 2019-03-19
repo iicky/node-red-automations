@@ -3247,6 +3247,7 @@
         "type": "subflow:64f3502b.1d232",
         "z": "850c061.bcd9ef8",
         "name": "",
+        "env": [],
         "x": 430,
         "y": 960,
         "wires": [
@@ -5198,7 +5199,7 @@
         "data": "{\"entity_id\":\"switch.flames\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 950,
+        "x": 1110,
         "y": 780,
         "wires": [
             []
@@ -5213,7 +5214,7 @@
         "payloadtype": "num",
         "payloadval": "0",
         "name": "10min",
-        "x": 950,
+        "x": 1110,
         "y": 840,
         "wires": [
             [
@@ -5233,7 +5234,7 @@
         "data": "{\"entity_id\":\"switch.off\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1090,
+        "x": 1250,
         "y": 840,
         "wires": [
             []
@@ -5250,7 +5251,7 @@
         "endTime": "23:00",
         "startOffset": 0,
         "endOffset": 0,
-        "x": 770,
+        "x": 930,
         "y": 840,
         "wires": [
             [
@@ -5271,7 +5272,7 @@
         "endTime": "22:00",
         "startOffset": "",
         "endOffset": "",
-        "x": 750,
+        "x": 910,
         "y": 760,
         "wires": [
             [
@@ -5293,7 +5294,7 @@
         "thu": true,
         "fri": false,
         "sat": false,
-        "x": 590,
+        "x": 750,
         "y": 820,
         "wires": [
             [
@@ -5355,7 +5356,7 @@
         "y": 820,
         "wires": [
             [
-                "2f2247cb.1b9db8"
+                "84be33cb.a71b1"
             ]
         ]
     },
@@ -6491,7 +6492,7 @@
         "z": "997b60db.958c4",
         "name": "Motion toggle?",
         "server": "a117d285.11d84",
-        "halt_if": "OFF",
+        "halt_if": "off",
         "override_topic": true,
         "override_payload": true,
         "override_data": true,
@@ -6609,6 +6610,223 @@
         "y": 220,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "1712abb9.9258e4",
+        "type": "change",
+        "z": "dc9e57a8.6747d8",
+        "name": "Status?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mickey_viacom",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e628ecae.ab544",
+        "type": "function",
+        "z": "dc9e57a8.6747d8",
+        "name": "Presence?",
+        "func": "msg.payload = (msg.payload > 0.1) ? true : false;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 380,
+        "wires": [
+            [
+                "1712abb9.9258e4"
+            ]
+        ]
+    },
+    {
+        "id": "4407ccdb.0bc134",
+        "type": "poll-state",
+        "z": "dc9e57a8.6747d8",
+        "name": "Viacom Tracker",
+        "server": "a117d285.11d84",
+        "updateinterval": "10",
+        "outputinitially": true,
+        "outputonchanged": false,
+        "entity_id": "sensor.mickey_iphone_viacom_presence",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "e628ecae.ab544"
+            ]
+        ]
+    },
+    {
+        "id": "227ae2a6.f6b2be",
+        "type": "comment",
+        "z": "dc9e57a8.6747d8",
+        "name": "Is Mickey at his desk?",
+        "info": "",
+        "x": 140,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8301ef96.f5968",
+        "type": "inject",
+        "z": "997b60db.958c4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 1000,
+        "wires": [
+            [
+                "112f47cc.bfd6e8"
+            ]
+        ]
+    },
+    {
+        "id": "112f47cc.bfd6e8",
+        "type": "switch",
+        "z": "997b60db.958c4",
+        "name": "At desk?",
+        "property": "mickey_viacom",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 280,
+        "y": 1000,
+        "wires": [
+            [
+                "5a63afa8.c091"
+            ],
+            [
+                "69b6d40c.138e8c"
+            ]
+        ]
+    },
+    {
+        "id": "43c9a91a.8aed88",
+        "type": "mqtt out",
+        "z": "997b60db.958c4",
+        "name": "On",
+        "topic": "testing/node",
+        "qos": "1",
+        "retain": "true",
+        "broker": "44deb46d.8fe2ec",
+        "x": 570,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "15315af5.008075",
+        "type": "mqtt out",
+        "z": "997b60db.958c4",
+        "name": "Off",
+        "topic": "testing/node",
+        "qos": "1",
+        "retain": "true",
+        "broker": "44deb46d.8fe2ec",
+        "x": 570,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "5a63afa8.c091",
+        "type": "change",
+        "z": "997b60db.958c4",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 960,
+        "wires": [
+            [
+                "43c9a91a.8aed88"
+            ]
+        ]
+    },
+    {
+        "id": "69b6d40c.138e8c",
+        "type": "change",
+        "z": "997b60db.958c4",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 1020,
+        "wires": [
+            [
+                "15315af5.008075"
+            ]
+        ]
+    },
+    {
+        "id": "84be33cb.a71b1",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Motion toggle?",
+        "server": "a117d285.11d84",
+        "halt_if": "off",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "switch.bedroom_motion_toggle",
+        "x": 580,
+        "y": 820,
+        "wires": [
+            [
+                "2f2247cb.1b9db8"
+            ]
         ]
     }
 ]
