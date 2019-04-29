@@ -175,7 +175,7 @@
         "repair": false,
         "outputs": 2,
         "x": 390,
-        "y": 100,
+        "y": 80,
         "wires": [
             [
                 "80d25265.805b1"
@@ -3571,16 +3571,22 @@
         "rules": [
             {
                 "t": "true"
+            },
+            {
+                "t": "false"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 240,
         "y": 100,
         "wires": [
             [
                 "54d27734.1ba1c8"
+            ],
+            [
+                "e87da622.4e07b8"
             ]
         ]
     },
@@ -4402,7 +4408,8 @@
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_off",
-        "data": "{\"entity_id\": \"switch.dohm\"}",
+        "data": "{\"entity_id\":\"switch.dohm\"}",
+        "render_data": false,
         "mergecontext": "",
         "x": 540,
         "y": 120,
