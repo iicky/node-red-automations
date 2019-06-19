@@ -21,6 +21,13 @@
         "info": ""
     },
     {
+        "id": "ff5da73d.cf2dd8",
+        "type": "tab",
+        "label": "Alexa | Plants",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "7538960a.bfe8b8",
         "type": "tab",
         "label": "Alexa | Smart Home",
@@ -174,8 +181,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 390,
-        "y": 80,
+        "x": 1130,
+        "y": 60,
         "wires": [
             [
                 "80d25265.805b1"
@@ -210,12 +217,10 @@
         "fri": true,
         "sat": true,
         "sun": true,
-        "x": 90,
-        "y": 100,
+        "x": 1150,
+        "y": 120,
         "wires": [
-            [
-                "bcc682d5.9f78a"
-            ]
+            []
         ]
     },
     {
@@ -2096,9 +2101,7 @@
         "x": 120,
         "y": 380,
         "wires": [
-            [
-                "9bbc3b2f.e95368"
-            ]
+            []
         ]
     },
     {
@@ -3579,8 +3582,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 240,
-        "y": 100,
+        "x": 980,
+        "y": 80,
         "wires": [
             [
                 "54d27734.1ba1c8"
@@ -4138,9 +4141,7 @@
         "x": 480,
         "y": 440,
         "wires": [
-            [
-                "c3563fbb.ff7c7"
-            ]
+            []
         ]
     },
     {
@@ -4411,8 +4412,8 @@
         "data": "{\"entity_id\":\"switch.dohm\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 540,
-        "y": 120,
+        "x": 1280,
+        "y": 100,
         "wires": [
             []
         ]
@@ -4427,8 +4428,8 @@
         "service": "turn_on",
         "data": "{\"entity_id\": \"switch.dohm\"}",
         "mergecontext": "",
-        "x": 540,
-        "y": 60,
+        "x": 1280,
+        "y": 40,
         "wires": [
             []
         ]
@@ -7059,6 +7060,322 @@
         "y": 780,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "ec9359e2.10ed18",
+        "type": "time-range-switch",
+        "z": "363f3bc3.b66854",
+        "name": "10pm - 9am",
+        "lat": "40.7799",
+        "lon": "-73.94872",
+        "startTime": "22:00",
+        "endTime": "9:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 570,
+        "y": 120,
+        "wires": [
+            [
+                "b0f5711.c0ef19"
+            ],
+            [
+                "ab9ec807.5f1248"
+            ]
+        ]
+    },
+    {
+        "id": "b2a5a784.1c98e8",
+        "type": "weekday",
+        "z": "363f3bc3.b66854",
+        "name": "Weekday?",
+        "sun": true,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": false,
+        "sat": false,
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "8bb6efab.74c7"
+            ],
+            [
+                "ec9359e2.10ed18"
+            ]
+        ]
+    },
+    {
+        "id": "8bb6efab.74c7",
+        "type": "time-range-switch",
+        "z": "363f3bc3.b66854",
+        "name": "10pm - 7:30am",
+        "lat": "40.7799",
+        "lon": "-73.94872",
+        "startTime": "22:00",
+        "endTime": "07:30",
+        "startOffset": "",
+        "endOffset": "",
+        "x": 580,
+        "y": 80,
+        "wires": [
+            [
+                "b0f5711.c0ef19"
+            ],
+            [
+                "ab9ec807.5f1248"
+            ]
+        ]
+    },
+    {
+        "id": "ab9ec807.5f1248",
+        "type": "api-call-service",
+        "z": "363f3bc3.b66854",
+        "name": "Dohm Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.dohm\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 780,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b0f5711.c0ef19",
+        "type": "api-call-service",
+        "z": "363f3bc3.b66854",
+        "name": "Dohm On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.dohm\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 780,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8ab0bc55.7f421",
+        "type": "switch",
+        "z": "363f3bc3.b66854",
+        "name": "Anyone home?",
+        "property": "anyone_home",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 240,
+        "y": 100,
+        "wires": [
+            [
+                "b2a5a784.1c98e8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "de38557d.f89e88",
+        "type": "inject",
+        "z": "363f3bc3.b66854",
+        "name": "1m",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "8ab0bc55.7f421"
+            ]
+        ]
+    },
+    {
+        "id": "5e396fb6.d8777",
+        "type": "http in",
+        "z": "ff5da73d.cf2dd8",
+        "name": "/plants",
+        "url": "/plants",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "9a4db6b6.be0148"
+            ]
+        ]
+    },
+    {
+        "id": "9a4db6b6.be0148",
+        "type": "function",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Extract User",
+        "func": "msg.userId = msg.payload.session.user.userId;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "4d64f512.d3371c"
+            ]
+        ]
+    },
+    {
+        "id": "4d64f512.d3371c",
+        "type": "switch",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Request",
+        "property": "payload.request.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "LaunchRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "IntentRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "SessionEndedRequest",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "257c17e5.850368"
+            ],
+            [
+                "631a56fa.9c2728"
+            ],
+            [
+                "fc915929.168e58"
+            ],
+            [
+                "c625b83f.cb0eb8"
+            ]
+        ]
+    },
+    {
+        "id": "257c17e5.850368",
+        "type": "function",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Start Session Message",
+        "func": "msg.payload = {\n    \"version\": \"1.0\",\n    \"response\": {\n        \"outputSpeech\": {\n            \"type\": \"SSML\",\n            \"ssml\": \"<speak><prosody rate='x-slow' pitch='x-low'>We the plants heed your commands. What is your request?</prosody></speak>\"\n        },\n        \"shouldEndSession\": false\n    },\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 60,
+        "wires": [
+            [
+                "d9c041c7.0fbb3"
+            ]
+        ]
+    },
+    {
+        "id": "fc915929.168e58",
+        "type": "function",
+        "z": "ff5da73d.cf2dd8",
+        "name": "End Session Message",
+        "func": "msg.payload = {\n  \"response\": {\n    \"outputSpeech\": {\n      \"type\": \"SSML\",\n      \"ssml\": \"<speak> Goodbye human! </speak>\"\n    },\n    \"shouldEndSession\": true\n  },\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 680,
+        "y": 120,
+        "wires": [
+            [
+                "d9c041c7.0fbb3"
+            ]
+        ]
+    },
+    {
+        "id": "c625b83f.cb0eb8",
+        "type": "function",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Unknown Message",
+        "func": "msg.payload = {\n  \"response\": {\n    \"outputSpeech\": {\n      \"type\": \"SSML\",\n      \"ssml\": \"<speak><prosody rate='x-slow' pitch='x-low'>The plants do not understand this.</prosody></speak>\"\n    },\n    \"shouldEndSession\": true\n  },\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 180,
+        "wires": [
+            [
+                "d9c041c7.0fbb3"
+            ]
+        ]
+    },
+    {
+        "id": "d9c041c7.0fbb3",
+        "type": "http response",
+        "z": "ff5da73d.cf2dd8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "631a56fa.9c2728",
+        "type": "switch",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Intent Switch",
+        "property": "payload.request.intent.name",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "PlantLastWateredIntent",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 130,
+        "y": 360,
+        "wires": [
+            [],
+            [
+                "c625b83f.cb0eb8"
+            ]
         ]
     }
 ]
