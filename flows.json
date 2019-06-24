@@ -2101,7 +2101,9 @@
         "x": 120,
         "y": 380,
         "wires": [
-            []
+            [
+                "9bbc3b2f.e95368"
+            ]
         ]
     },
     {
@@ -7089,12 +7091,12 @@
         "type": "weekday",
         "z": "363f3bc3.b66854",
         "name": "Weekday?",
-        "sun": true,
+        "sun": false,
         "mon": true,
         "tue": true,
         "wed": true,
         "thu": true,
-        "fri": false,
+        "fri": true,
         "sat": false,
         "x": 410,
         "y": 100,
@@ -7119,7 +7121,7 @@
         "startOffset": "",
         "endOffset": "",
         "x": 580,
-        "y": 80,
+        "y": 60,
         "wires": [
             [
                 "b0f5711.c0ef19"
@@ -7219,7 +7221,7 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 150,
+        "x": 70,
         "y": 160,
         "wires": [
             [
@@ -7235,7 +7237,7 @@
         "func": "msg.userId = msg.payload.session.user.userId;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 310,
+        "x": 230,
         "y": 160,
         "wires": [
             [
@@ -7273,7 +7275,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 4,
-        "x": 460,
+        "x": 380,
         "y": 160,
         "wires": [
             [
@@ -7295,10 +7297,10 @@
         "type": "function",
         "z": "ff5da73d.cf2dd8",
         "name": "Start Session Message",
-        "func": "msg.payload = {\n    \"version\": \"1.0\",\n    \"response\": {\n        \"outputSpeech\": {\n            \"type\": \"SSML\",\n            \"ssml\": \"<speak><prosody rate='x-slow' pitch='x-low'>We the plants heed your commands. What is your request?</prosody></speak>\"\n        },\n        \"shouldEndSession\": false\n    },\n}\n\nreturn msg;",
+        "func": "msg.payload = {\n    \"version\": \"1.0\",\n    \"response\": {\n        \"outputSpeech\": {\n            \"type\": \"SSML\",\n            \"ssml\": \"<speak>We are the plants.</speak>\"\n        },\n        \"shouldEndSession\": false\n    },\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 650,
+        "x": 570,
         "y": 60,
         "wires": [
             [
@@ -7314,7 +7316,7 @@
         "func": "msg.payload = {\n  \"response\": {\n    \"outputSpeech\": {\n      \"type\": \"SSML\",\n      \"ssml\": \"<speak> Goodbye human! </speak>\"\n    },\n    \"shouldEndSession\": true\n  },\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 680,
+        "x": 600,
         "y": 120,
         "wires": [
             [
@@ -7327,10 +7329,10 @@
         "type": "function",
         "z": "ff5da73d.cf2dd8",
         "name": "Unknown Message",
-        "func": "msg.payload = {\n  \"response\": {\n    \"outputSpeech\": {\n      \"type\": \"SSML\",\n      \"ssml\": \"<speak><prosody rate='x-slow' pitch='x-low'>The plants do not understand this.</prosody></speak>\"\n    },\n    \"shouldEndSession\": true\n  },\n}\n\nreturn msg;",
+        "func": "msg.payload = {\n  \"response\": {\n    \"outputSpeech\": {\n      \"type\": \"SSML\",\n      \"ssml\": \"<speak>We plants do not understand this.</speak>\"\n    },\n    \"shouldEndSession\": true\n  },\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 670,
+        "x": 590,
         "y": 180,
         "wires": [
             [
@@ -7345,7 +7347,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 890,
+        "x": 810,
         "y": 120,
         "wires": []
     },
@@ -7369,13 +7371,68 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 130,
-        "y": 360,
+        "x": 270,
+        "y": 300,
         "wires": [
-            [],
+            [
+                "b956d73d.301738"
+            ],
             [
                 "c625b83f.cb0eb8"
             ]
         ]
+    },
+    {
+        "id": "b956d73d.301738",
+        "type": "function",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Extract plant info",
+        "func": "raw_plant = msg.payload.request.intent.slots.plant.value;\n\n// Fix plants casing on raw plants\nplant_mapper = {\n   'airplants': 'airplants',\n   'airplant': 'airplants',\n   'epiphytes': 'airplants'\n}\n\n// Determine plant name and info\nhomeassistant = global.get('homeassistant')\n\nplant = plant_mapper[raw_plant.toLowerCase()]\n\nlast_watered_date = homeassistant.homeAssistant.states[\n    'sensor.' + plant + '_last_watered'\n].state\n\ndays_since_last_watered = homeassistant.homeAssistant.states[\n    'sensor.' + plant + '_days_since_last_watered'\n].state\n\n// Set payload data\nmsg.payload.data = {\n    \"plant\": plant,\n    \"last_watered_date\": last_watered_date,\n    \"days_since_last_watered\": days_since_last_watered\n }\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 340,
+        "wires": [
+            [
+                "212e2e7b.e07342"
+            ]
+        ]
+    },
+    {
+        "id": "212e2e7b.e07342",
+        "type": "function",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Info Message",
+        "func": "msg.payload = {\n  \"version\": \"1.0\",\n  \"response\": {\n    \"outputSpeech\": {\n      \"type\": \"SSML\",\n      \"ssml\": \"<speak>The \"  + msg.payload.data.plant + \" got watered \" + \n               msg.payload.data.days_since_last_watered + \" days ago on \" + \n               msg.payload.data.last_watered_date + \".</speak>\"\n    },\n    \"reprompt\": {\n      \"outputSpeech\": {\n        \"type\": \"SSML\",\n        \"ssml\": \"<speak>The \"  + msg.payload.data.plant + \" got watered \" + \n               msg.payload.data.days_since_last_watered + \" days ago on \" + \n               msg.payload.data.last_watered_date + \".</speak>\"\n      }\n    },\n    \"shouldEndSession\": true\n  }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "e362b6e7.dde8d8"
+            ]
+        ]
+    },
+    {
+        "id": "e362b6e7.dde8d8",
+        "type": "http response",
+        "z": "ff5da73d.cf2dd8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "61968ef4.d0cd4",
+        "type": "comment",
+        "z": "ff5da73d.cf2dd8",
+        "name": "Last Watered Request",
+        "info": "",
+        "x": 520,
+        "y": 300,
+        "wires": []
     }
 ]
