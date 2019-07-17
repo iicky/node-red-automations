@@ -63,6 +63,13 @@
         "info": ""
     },
     {
+        "id": "2d3b6811.740538",
+        "type": "tab",
+        "label": "Slack",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "6b041d7.60aaee4",
         "type": "subflow",
         "name": "Blink Hoplite Yellow",
@@ -2037,9 +2044,7 @@
         "x": 120,
         "y": 380,
         "wires": [
-            [
-                "9bbc3b2f.e95368"
-            ]
+            []
         ]
     },
     {
@@ -4049,9 +4054,7 @@
         "x": 480,
         "y": 440,
         "wires": [
-            [
-                "c3563fbb.ff7c7"
-            ]
+            []
         ]
     },
     {
@@ -7393,5 +7396,81 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "f4358172.e105b",
+        "type": "http in",
+        "z": "2d3b6811.740538",
+        "name": "/climate",
+        "url": "/climate",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "1e68f8db.8f4327"
+            ]
+        ]
+    },
+    {
+        "id": "deaf59d3.437c88",
+        "type": "http response",
+        "z": "2d3b6811.740538",
+        "name": "Slack response",
+        "statusCode": "",
+        "headers": {},
+        "x": 620,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1e68f8db.8f4327",
+        "type": "api-current-state",
+        "z": "2d3b6811.740538",
+        "name": "Viacom Weather",
+        "server": "a117d285.11d84",
+        "halt_if": "",
+        "override_topic": false,
+        "override_payload": false,
+        "override_data": true,
+        "entity_id": "sensor.viacom_temperature",
+        "x": 300,
+        "y": 100,
+        "wires": [
+            [
+                "a1a90472.e5a208"
+            ]
+        ]
+    },
+    {
+        "id": "a1a90472.e5a208",
+        "type": "template",
+        "z": "2d3b6811.740538",
+        "name": "Response",
+        "field": "payload.text",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "It is currently {{data.state}}°F and {{data.attributes.humidity}}% humidity.",
+        "output": "str",
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "deaf59d3.437c88"
+            ]
+        ]
+    },
+    {
+        "id": "8d8051d0.c0082",
+        "type": "comment",
+        "z": "2d3b6811.740538",
+        "name": "Climate Slack Bot",
+        "info": "",
+        "x": 190,
+        "y": 60,
+        "wires": []
     }
 ]
