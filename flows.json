@@ -130,6 +130,37 @@
         ]
     },
     {
+        "id": "66959060.dd999",
+        "type": "subflow",
+        "name": "Blink Hoplite Purple",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 360,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "9034f14.e70601"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 740,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "9118336b.0de3b",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": []
+    },
+    {
         "id": "a117d285.11d84",
         "type": "server",
         "z": "",
@@ -2323,7 +2354,7 @@
         "perf": false,
         "seq": false,
         "x": 930,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "fa8e9b09.d416f8"
@@ -2837,7 +2868,7 @@
         "to": "",
         "reg": false,
         "x": 470,
-        "y": 620,
+        "y": 800,
         "wires": [
             [
                 "42e1bfaf.011df"
@@ -2849,11 +2880,11 @@
         "type": "actionflows_in",
         "z": "850c061.bcd9ef8",
         "name": "delay lock in",
-        "priority": "55",
+        "priority": "1",
         "links": [],
         "scope": "protected",
         "x": 130,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "c8585618.276948"
@@ -2867,7 +2898,7 @@
         "name": "delay lock out",
         "links": [],
         "x": 480,
-        "y": 660,
+        "y": 840,
         "wires": []
     },
     {
@@ -2892,7 +2923,7 @@
         "repair": false,
         "outputs": 3,
         "x": 290,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "fa323be9.c1f8a8"
@@ -2925,7 +2956,7 @@
         "to": "",
         "reg": false,
         "x": 1050,
-        "y": 500,
+        "y": 680,
         "wires": [
             []
         ]
@@ -2949,7 +2980,7 @@
         "repair": false,
         "outputs": 2,
         "x": 790,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "76d44f65.1a05f"
@@ -2972,7 +3003,7 @@
         "once": true,
         "onceDelay": 0.1,
         "x": 150,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "cb6f54d9.d4f718"
@@ -2992,7 +3023,7 @@
         "once": true,
         "onceDelay": 0.1,
         "x": 140,
-        "y": 400,
+        "y": 580,
         "wires": [
             [
                 "c52b8ec2.dffc7"
@@ -3019,7 +3050,7 @@
         "to": "",
         "reg": false,
         "x": 270,
-        "y": 400,
+        "y": 580,
         "wires": [
             []
         ]
@@ -3029,11 +3060,11 @@
         "type": "function",
         "z": "850c061.bcd9ef8",
         "name": "Any alerts?",
-        "func": "\n// Returns true if any alerts\nmsg.payload = [\n   flow.get(\"delays_456\"),\n   flow.get(\"delays_Q\"),\n].some(function(x) { \n    return x\n});\n\nreturn msg;",
+        "func": "\n// Returns true if any alerts\nmsg.payload = [\n   flow.get(\"delays_456\"),\n   flow.get(\"delays_Q\"),\n   flow.get(\"delays_7\"),\n].some(function(x) { \n    return x\n});\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 310,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "ba1ee49f.ed0338"
@@ -3060,7 +3091,7 @@
         "to": "",
         "reg": false,
         "x": 450,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "bc4b116a.86189"
@@ -3075,8 +3106,8 @@
         "priority": "50",
         "links": [],
         "scope": "protected",
-        "x": 140,
-        "y": 880,
+        "x": 120,
+        "y": 1060,
         "wires": [
             [
                 "d42da472.573238"
@@ -3090,7 +3121,7 @@
         "name": "delay Q out",
         "links": [],
         "x": 450,
-        "y": 900,
+        "y": 1080,
         "wires": []
     },
     {
@@ -3099,7 +3130,7 @@
         "z": "850c061.bcd9ef8",
         "name": "",
         "x": 430,
-        "y": 860,
+        "y": 1040,
         "wires": [
             [
                 "d0f289f4.a2c5f8"
@@ -3125,7 +3156,7 @@
         "repair": false,
         "outputs": 2,
         "x": 270,
-        "y": 880,
+        "y": 1060,
         "wires": [
             [
                 "dedf4432.211068"
@@ -3140,11 +3171,11 @@
         "type": "actionflows_in",
         "z": "850c061.bcd9ef8",
         "name": "delay 4/5/6 in",
-        "priority": "49",
+        "priority": "51",
         "links": [],
         "scope": "protected",
         "x": 130,
-        "y": 980,
+        "y": 1160,
         "wires": [
             [
                 "522b9226.fcb06c"
@@ -3158,7 +3189,7 @@
         "name": "delay 4/5/6 out",
         "links": [],
         "x": 440,
-        "y": 1000,
+        "y": 1180,
         "wires": []
     },
     {
@@ -3180,7 +3211,7 @@
         "repair": false,
         "outputs": 2,
         "x": 270,
-        "y": 980,
+        "y": 1160,
         "wires": [
             [
                 "b622450a.3cdef8"
@@ -3197,7 +3228,7 @@
         "name": "",
         "env": [],
         "x": 430,
-        "y": 960,
+        "y": 1140,
         "wires": [
             [
                 "ecde20c0.53017"
@@ -3216,7 +3247,7 @@
         "startOffset": "",
         "endOffset": "",
         "x": 610,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "305a1ec0.2b2a72"
@@ -3231,7 +3262,7 @@
         "name": "Unlock action on flow reset",
         "info": "",
         "x": 170,
-        "y": 360,
+        "y": 540,
         "wires": []
     },
     {
@@ -3241,7 +3272,7 @@
         "name": "Trigger action on morning alert",
         "info": "",
         "x": 190,
-        "y": 460,
+        "y": 640,
         "wires": []
     },
     {
@@ -3251,7 +3282,7 @@
         "name": "Lock action on trigger",
         "info": "",
         "x": 160,
-        "y": 580,
+        "y": 760,
         "wires": []
     },
     {
@@ -3271,7 +3302,7 @@
         "name": "Blink if Q Delayed",
         "info": "",
         "x": 150,
-        "y": 840,
+        "y": 1020,
         "wires": []
     },
     {
@@ -3281,22 +3312,22 @@
         "name": "Blink if 4/5/6 Delayed",
         "info": "",
         "x": 160,
-        "y": 940,
+        "y": 1120,
         "wires": []
     },
     {
         "id": "9fe48a8.da14f78",
         "type": "time-range-switch",
         "z": "850c061.bcd9ef8",
-        "name": "7:30am - 8:30am",
+        "name": "7:30am - 9am",
         "lat": "40.7799",
         "lon": "-73.94872",
         "startTime": "7:30",
-        "endTime": "8:30",
+        "endTime": "9:00",
         "startOffset": "",
         "endOffset": "",
-        "x": 330,
-        "y": 760,
+        "x": 320,
+        "y": 940,
         "wires": [
             [
                 "a90b9e1c.7f3ab"
@@ -3311,11 +3342,11 @@
         "type": "actionflows_in",
         "z": "850c061.bcd9ef8",
         "name": "delay time in",
-        "priority": "55",
+        "priority": "2",
         "links": [],
         "scope": "protected",
         "x": 130,
-        "y": 760,
+        "y": 940,
         "wires": [
             [
                 "9fe48a8.da14f78"
@@ -3342,7 +3373,7 @@
         "to": "",
         "reg": false,
         "x": 510,
-        "y": 780,
+        "y": 960,
         "wires": [
             [
                 "a90b9e1c.7f3ab"
@@ -3356,7 +3387,7 @@
         "name": "delay time out",
         "links": [],
         "x": 560,
-        "y": 740,
+        "y": 920,
         "wires": []
     },
     {
@@ -3366,7 +3397,7 @@
         "name": "Break alert if past time",
         "info": "",
         "x": 160,
-        "y": 720,
+        "y": 900,
         "wires": []
     },
     {
@@ -6499,7 +6530,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "10",
+        "repeat": "5",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -7545,6 +7576,338 @@
         "mergecontext": "",
         "x": 800,
         "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7334008b.78c8",
+        "type": "poll-state",
+        "z": "850c061.bcd9ef8",
+        "name": "7 Train",
+        "server": "a117d285.11d84",
+        "updateinterval": "5",
+        "outputinitially": false,
+        "outputonchanged": false,
+        "entity_id": "sensor.mta_subway_7",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "1cbdbed5.ab9751"
+            ]
+        ]
+    },
+    {
+        "id": "1cbdbed5.ab9751",
+        "type": "function",
+        "z": "850c061.bcd9ef8",
+        "name": "Delayed?",
+        "func": "// Returns true if train is delayed\nmsg.payload = (\n    msg.payload === \"Delays\"\n);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "8a671044.7c1a5"
+            ]
+        ]
+    },
+    {
+        "id": "8a671044.7c1a5",
+        "type": "change",
+        "z": "850c061.bcd9ef8",
+        "name": "Delays 7?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delays_7",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ff62202.40506e",
+        "type": "mqtt out",
+        "z": "66959060.dd999",
+        "name": "Hoplite",
+        "topic": "wemos/hoplite/set",
+        "qos": "0",
+        "retain": "true",
+        "broker": "44deb46d.8fe2ec",
+        "x": 700,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9034f14.e70601",
+        "type": "template",
+        "z": "66959060.dd999",
+        "name": "Purple",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"state\":\"ON\",\"color\":{\"r\":157,\"g\":61,\"b\":150},\"brightness\":100,\"speed\":60,\"effect\":\"static\"}",
+        "output": "json",
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "5f42eaf4.0fe644",
+                "2ff62202.40506e"
+            ]
+        ]
+    },
+    {
+        "id": "5f42eaf4.0fe644",
+        "type": "delay",
+        "z": "66959060.dd999",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 500,
+        "y": 260,
+        "wires": [
+            [
+                "7b15b65b.2d5b58"
+            ]
+        ]
+    },
+    {
+        "id": "7b15b65b.2d5b58",
+        "type": "template",
+        "z": "66959060.dd999",
+        "name": "OFF",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"state\":\"OFF\", \"speed\":60,\"effect\":\"static\"}",
+        "output": "json",
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "9118336b.0de3b",
+                "2ff62202.40506e"
+            ]
+        ]
+    },
+    {
+        "id": "9118336b.0de3b",
+        "type": "delay",
+        "z": "66959060.dd999",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 640,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d0e24c9.4d67ac",
+        "type": "actionflows_in",
+        "z": "850c061.bcd9ef8",
+        "name": "delay 7 in",
+        "priority": "52",
+        "links": [],
+        "scope": "protected",
+        "x": 120,
+        "y": 1260,
+        "wires": [
+            [
+                "d1a3c228.8699f"
+            ]
+        ]
+    },
+    {
+        "id": "88819ada.9d53c8",
+        "type": "actionflows_out",
+        "z": "850c061.bcd9ef8",
+        "name": "delay 7 out",
+        "links": [],
+        "x": 430,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "d1a3c228.8699f",
+        "type": "switch",
+        "z": "850c061.bcd9ef8",
+        "name": "7?",
+        "property": "delays_7",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 1260,
+        "wires": [
+            [
+                "5fea45ee.99b1ac"
+            ],
+            [
+                "88819ada.9d53c8"
+            ]
+        ]
+    },
+    {
+        "id": "62796e61.3ed82",
+        "type": "comment",
+        "z": "850c061.bcd9ef8",
+        "name": "Blink if 7 Delayed",
+        "info": "",
+        "x": 140,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "5fea45ee.99b1ac",
+        "type": "subflow:66959060.dd999",
+        "z": "850c061.bcd9ef8",
+        "name": "",
+        "env": [],
+        "x": 430,
+        "y": 1240,
+        "wires": [
+            [
+                "88819ada.9d53c8"
+            ]
+        ]
+    },
+    {
+        "id": "1fcc98f5.79c8b7",
+        "type": "inject",
+        "z": "850c061.bcd9ef8",
+        "name": "",
+        "topic": "",
+        "payload": "Good Service",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 770,
+        "y": 420,
+        "wires": [
+            [
+                "3202ed42.5c8022"
+            ]
+        ]
+    },
+    {
+        "id": "3202ed42.5c8022",
+        "type": "function",
+        "z": "850c061.bcd9ef8",
+        "name": "Toggle delay",
+        "func": "msg.payload = {\n    'data': {\n        'state': msg.payload\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 440,
+        "wires": [
+            [
+                "33776225.67039e"
+            ]
+        ]
+    },
+    {
+        "id": "1338a27e.da499e",
+        "type": "inject",
+        "z": "850c061.bcd9ef8",
+        "name": "",
+        "topic": "",
+        "payload": "Delays",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 750,
+        "y": 460,
+        "wires": [
+            [
+                "3202ed42.5c8022"
+            ]
+        ]
+    },
+    {
+        "id": "33776225.67039e",
+        "type": "function",
+        "z": "850c061.bcd9ef8",
+        "name": "Delayed?",
+        "func": "// Returns true if train is delayed\nmsg.payload = (\n    msg.payload.data.state === \"Delays\"\n);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1080,
+        "y": 440,
+        "wires": [
+            [
+                "224ddc04.e1cb04"
+            ]
+        ]
+    },
+    {
+        "id": "224ddc04.e1cb04",
+        "type": "change",
+        "z": "850c061.bcd9ef8",
+        "name": "Delays 7?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delays_7",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1220,
+        "y": 440,
         "wires": [
             []
         ]
