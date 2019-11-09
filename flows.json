@@ -7911,5 +7911,173 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "c04a740c.74b5d8",
+        "type": "alexa-home",
+        "z": "7538960a.bfe8b8",
+        "conf": "8a0c2cc0.358c6",
+        "device": "77640",
+        "acknoledge": true,
+        "name": "Lanna Lantern",
+        "topic": "",
+        "x": 1190,
+        "y": 540,
+        "wires": [
+            [
+                "811ea503.f6cf28"
+            ]
+        ]
+    },
+    {
+        "id": "53117228.f3bcec",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.lanna_lantern\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1490,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "53b42182.8b281",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.lanna_lantern\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1490,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "811ea503.f6cf28",
+        "type": "switch",
+        "z": "7538960a.bfe8b8",
+        "name": "",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TurnOnRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TurnOffRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1350,
+        "y": 540,
+        "wires": [
+            [
+                "53117228.f3bcec"
+            ],
+            [
+                "53b42182.8b281"
+            ]
+        ]
+    },
+    {
+        "id": "830844c2.fdd198",
+        "type": "alexa-home",
+        "z": "7538960a.bfe8b8",
+        "conf": "8a0c2cc0.358c6",
+        "device": "77639",
+        "acknoledge": true,
+        "name": "Thai Light",
+        "topic": "",
+        "x": 1180,
+        "y": 420,
+        "wires": [
+            [
+                "720adbe0.205444"
+            ]
+        ]
+    },
+    {
+        "id": "7406ac44.ce7064",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.thai_light\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1490,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9c516d1.988588",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.thai_light\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1490,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "720adbe0.205444",
+        "type": "switch",
+        "z": "7538960a.bfe8b8",
+        "name": "",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TurnOnRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TurnOffRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1350,
+        "y": 420,
+        "wires": [
+            [
+                "7406ac44.ce7064"
+            ],
+            [
+                "e9c516d1.988588"
+            ]
+        ]
     }
 ]
