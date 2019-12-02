@@ -916,10 +916,11 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "turn_off",
-        "data": "{\"entity_id\": \"media_player.receiver\" }",
+        "data": "{\"entity_id\":\"media_player.receiver\"}",
+        "render_data": false,
         "mergecontext": "",
         "x": 390,
-        "y": 220,
+        "y": 240,
         "wires": [
             []
         ]
@@ -985,7 +986,7 @@
         "data": "{\"entity_id\": \"switch.living_room_tv\" }",
         "mergecontext": "",
         "x": 390,
-        "y": 340,
+        "y": 360,
         "wires": [
             []
         ]
@@ -1942,11 +1943,11 @@
         "id": "4d46c426.a97b7c",
         "type": "time-range-switch",
         "z": "997b60db.958c4",
-        "name": "Sunset - 11pm",
+        "name": "Sunset - 12am",
         "lat": "40.7799",
         "lon": "-73.94872",
-        "startTime": "sunset",
-        "endTime": "23:00",
+        "startTime": "sunsetStart",
+        "endTime": "00:00",
         "startOffset": 0,
         "endOffset": 0,
         "x": 940,
@@ -2023,11 +2024,11 @@
         "id": "f967442c.b94d18",
         "type": "time-range-switch",
         "z": "997b60db.958c4",
-        "name": "Sunset - 10pm",
+        "name": "Sunset - 11pm",
         "lat": "40.7799",
         "lon": "-73.94872",
-        "startTime": "sunset",
-        "endTime": "22:00",
+        "startTime": "sunsetStart",
+        "endTime": "23:00",
         "startOffset": "",
         "endOffset": "",
         "x": 940,
@@ -7358,7 +7359,7 @@
         "name": "Front Door Toggle",
         "topic": "",
         "x": 810,
-        "y": 920,
+        "y": 1200,
         "wires": [
             [
                 "89459890.d50108"
@@ -7388,7 +7389,7 @@
         "repair": false,
         "outputs": 2,
         "x": 970,
-        "y": 920,
+        "y": 1200,
         "wires": [
             [
                 "8d70497b.cd4c38"
@@ -7410,7 +7411,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 1110,
-        "y": 900,
+        "y": 1180,
         "wires": [
             []
         ]
@@ -7427,7 +7428,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 1110,
-        "y": 960,
+        "y": 1240,
         "wires": [
             []
         ]
@@ -8077,6 +8078,258 @@
             ],
             [
                 "e9c516d1.988588"
+            ]
+        ]
+    },
+    {
+        "id": "8c879127.423dd",
+        "type": "alexa-home",
+        "z": "7538960a.bfe8b8",
+        "conf": "8a0c2cc0.358c6",
+        "device": "80152",
+        "acknoledge": true,
+        "name": "Rice Lights",
+        "topic": "",
+        "x": 740,
+        "y": 920,
+        "wires": [
+            [
+                "49c71175.b86e4"
+            ]
+        ]
+    },
+    {
+        "id": "85b83c9a.6f4d3",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.rice_lights\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1010,
+        "y": 900,
+        "wires": [
+            [
+                "1469b807.187c08"
+            ]
+        ]
+    },
+    {
+        "id": "76fe4f00.0cd1a",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.rice_lights\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1010,
+        "y": 940,
+        "wires": [
+            [
+                "e34d508e.f977a"
+            ]
+        ]
+    },
+    {
+        "id": "49c71175.b86e4",
+        "type": "switch",
+        "z": "7538960a.bfe8b8",
+        "name": "",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TurnOnRequest",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TurnOffRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 870,
+        "y": 920,
+        "wires": [
+            [
+                "85b83c9a.6f4d3"
+            ],
+            [
+                "76fe4f00.0cd1a"
+            ]
+        ]
+    },
+    {
+        "id": "9a0de6e.299bf18",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.rice_lights\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1250,
+        "y": 940,
+        "wires": [
+            [
+                "1dc70b25.f93335"
+            ]
+        ]
+    },
+    {
+        "id": "65e03a4b.a9ca84",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.rice_lights\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1490,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7351997.4461f8",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.rice_lights\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1250,
+        "y": 900,
+        "wires": [
+            [
+                "6c016136.dfe2c"
+            ]
+        ]
+    },
+    {
+        "id": "b04ad8e5.8eea18",
+        "type": "api-call-service",
+        "z": "7538960a.bfe8b8",
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.rice_lights\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1490,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1469b807.187c08",
+        "type": "delay",
+        "z": "7538960a.bfe8b8",
+        "name": "3s",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1130,
+        "y": 900,
+        "wires": [
+            [
+                "a7351997.4461f8"
+            ]
+        ]
+    },
+    {
+        "id": "e34d508e.f977a",
+        "type": "delay",
+        "z": "7538960a.bfe8b8",
+        "name": "3s",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1130,
+        "y": 940,
+        "wires": [
+            [
+                "9a0de6e.299bf18"
+            ]
+        ]
+    },
+    {
+        "id": "6c016136.dfe2c",
+        "type": "delay",
+        "z": "7538960a.bfe8b8",
+        "name": "3s",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1370,
+        "y": 900,
+        "wires": [
+            [
+                "b04ad8e5.8eea18"
+            ]
+        ]
+    },
+    {
+        "id": "1dc70b25.f93335",
+        "type": "delay",
+        "z": "7538960a.bfe8b8",
+        "name": "3s",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1370,
+        "y": 940,
+        "wires": [
+            [
+                "65e03a4b.a9ca84"
             ]
         ]
     }
