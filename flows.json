@@ -4088,7 +4088,9 @@
         "x": 480,
         "y": 440,
         "wires": [
-            []
+            [
+                "c3563fbb.ff7c7"
+            ]
         ]
     },
     {
@@ -6536,7 +6538,7 @@
         "once": true,
         "onceDelay": 0.1,
         "x": 190,
-        "y": 1000,
+        "y": 1220,
         "wires": [
             [
                 "112f47cc.bfd6e8"
@@ -6562,7 +6564,7 @@
         "repair": false,
         "outputs": 2,
         "x": 340,
-        "y": 1000,
+        "y": 1220,
         "wires": [
             [
                 "5a63afa8.c091"
@@ -6592,11 +6594,10 @@
         "to": "",
         "reg": false,
         "x": 490,
-        "y": 960,
+        "y": 1180,
         "wires": [
             [
-                "aeba7d2.b70e08",
-                "5d112706.9a6448"
+                "aeba7d2.b70e08"
             ]
         ]
     },
@@ -6620,11 +6621,10 @@
         "to": "",
         "reg": false,
         "x": 490,
-        "y": 1080,
+        "y": 1260,
         "wires": [
             [
-                "553654ef.f507fc",
-                "38b16829.116e98"
+                "553654ef.f507fc"
             ]
         ]
     },
@@ -6659,7 +6659,7 @@
         "override_data": true,
         "entity_id": "switch.birch_branches",
         "x": 630,
-        "y": 920,
+        "y": 1180,
         "wires": [
             [
                 "e2ec71f7.cf057"
@@ -6678,7 +6678,7 @@
         "override_data": true,
         "entity_id": "switch.birch_branches",
         "x": 630,
-        "y": 1040,
+        "y": 1260,
         "wires": [
             [
                 "b8bacb81.b49fc8"
@@ -6689,15 +6689,15 @@
         "id": "e2ec71f7.cf057",
         "type": "api-call-service",
         "z": "997b60db.958c4",
-        "name": "Birch Branches On",
+        "name": "Viacom Lights On",
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_on",
-        "data": "{\"entity_id\":\"switch.birch_branches\"}",
+        "data": "{\"entity_id\":\"group.viacom\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 810,
-        "y": 920,
+        "y": 1180,
         "wires": [
             []
         ]
@@ -6706,15 +6706,15 @@
         "id": "b8bacb81.b49fc8",
         "type": "api-call-service",
         "z": "997b60db.958c4",
-        "name": "Birch Branches Off",
+        "name": "Viacom Lights Off",
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_off",
-        "data": "{\"entity_id\":\"switch.birch_branches\"}",
+        "data": "{\"entity_id\":\"group.viacom\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 810,
-        "y": 1040,
+        "y": 1260,
         "wires": [
             []
         ]
@@ -6726,7 +6726,7 @@
         "name": "Turn on lights when Mickey at desk",
         "info": "",
         "x": 200,
-        "y": 960,
+        "y": 1180,
         "wires": []
     },
     {
@@ -7297,7 +7297,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 140,
-        "y": 1200,
+        "y": 960,
         "wires": [
             [
                 "46fbfb20.2d1704",
@@ -7317,7 +7317,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 330,
-        "y": 1200,
+        "y": 960,
         "wires": [
             []
         ]
@@ -7334,7 +7334,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 310,
-        "y": 1260,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -7346,7 +7346,7 @@
         "name": "Reset toggles at 9am",
         "info": "",
         "x": 160,
-        "y": 1160,
+        "y": 920,
         "wires": []
     },
     {
@@ -7508,78 +7508,6 @@
         "x": 190,
         "y": 60,
         "wires": []
-    },
-    {
-        "id": "38b16829.116e98",
-        "type": "api-current-state",
-        "z": "997b60db.958c4",
-        "name": "Already off?",
-        "server": "a117d285.11d84",
-        "halt_if": "off",
-        "override_topic": true,
-        "override_payload": true,
-        "override_data": true,
-        "entity_id": "switch.desk_lamp",
-        "x": 630,
-        "y": 1100,
-        "wires": [
-            [
-                "712fb890.63d358"
-            ]
-        ]
-    },
-    {
-        "id": "712fb890.63d358",
-        "type": "api-call-service",
-        "z": "997b60db.958c4",
-        "name": "Desk Lamp Off",
-        "server": "a117d285.11d84",
-        "service_domain": "switch",
-        "service": "turn_off",
-        "data": "{\"entity_id\":\"switch.desk_lamp\"}",
-        "render_data": false,
-        "mergecontext": "",
-        "x": 800,
-        "y": 1100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5d112706.9a6448",
-        "type": "api-current-state",
-        "z": "997b60db.958c4",
-        "name": "Already on?",
-        "server": "a117d285.11d84",
-        "halt_if": "on",
-        "override_topic": true,
-        "override_payload": true,
-        "override_data": true,
-        "entity_id": "switch.desk_lamp",
-        "x": 630,
-        "y": 980,
-        "wires": [
-            [
-                "7e6dcf50.df413"
-            ]
-        ]
-    },
-    {
-        "id": "7e6dcf50.df413",
-        "type": "api-call-service",
-        "z": "997b60db.958c4",
-        "name": "Desk Lamp On",
-        "server": "a117d285.11d84",
-        "service_domain": "switch",
-        "service": "turn_on",
-        "data": "{\"entity_id\":\"switch.desk_lamp\"}",
-        "render_data": false,
-        "mergecontext": "",
-        "x": 800,
-        "y": 980,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "7334008b.78c8",
