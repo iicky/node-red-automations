@@ -73,7 +73,7 @@
         "id": "5bdb864b.a911d8",
         "type": "tab",
         "label": "Habitica",
-        "disabled": true,
+        "disabled": false,
         "info": ""
     },
     {
@@ -8282,17 +8282,6 @@
         ]
     },
     {
-        "id": "a543b7c6.0afb7",
-        "type": "http response",
-        "z": "5bdb864b.a911d8",
-        "name": "",
-        "statusCode": "200",
-        "headers": {},
-        "x": 260,
-        "y": 240,
-        "wires": []
-    },
-    {
         "id": "100d90a3.a7452f",
         "type": "switch",
         "z": "5bdb864b.a911d8",
@@ -8301,12 +8290,12 @@
         "propertyType": "msg",
         "rules": [
             {
+                "t": "else"
+            },
+            {
                 "t": "eq",
                 "v": "scored",
                 "vt": "str"
-            },
-            {
-                "t": "else"
             }
         ],
         "checkall": "true",
@@ -8316,12 +8305,13 @@
         "y": 180,
         "wires": [
             [
-                "10cbef44.81bc21"
+                "9d30b90c.1946e8"
             ],
             [
-                "a543b7c6.0afb7"
+                "10cbef44.81bc21"
             ]
-        ]
+        ],
+        "info": "Filter scoring tasks, or tasks that were completed."
     },
     {
         "id": "10cbef44.81bc21",
@@ -8332,28 +8322,29 @@
         "propertyType": "msg",
         "rules": [
             {
+                "t": "else"
+            },
+            {
                 "t": "eq",
                 "v": "up",
                 "vt": "str"
-            },
-            {
-                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
         "x": 410,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
-                "390eb0e5.54a95",
-                "d678f07f.b7888"
+                "9d30b90c.1946e8"
             ],
             [
+                "e5b926b6.f0c758",
                 "9d30b90c.1946e8"
             ]
-        ]
+        ],
+        "info": "Filter only tasks with positive scores."
     },
     {
         "id": "9d30b90c.1946e8",
@@ -8362,9 +8353,10 @@
         "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 420,
-        "y": 240,
-        "wires": []
+        "x": 540,
+        "y": 120,
+        "wires": [],
+        "info": "200 Response to Webhook"
     },
     {
         "id": "d678f07f.b7888",
@@ -8377,8 +8369,8 @@
         "override_payload": true,
         "override_data": true,
         "entity_id": "light.vines",
-        "x": 270,
-        "y": 520,
+        "x": 810,
+        "y": 200,
         "wires": [
             [
                 "4b71bf37.a2ee9",
@@ -8386,17 +8378,6 @@
                 "bf8958af.805bd8"
             ]
         ]
-    },
-    {
-        "id": "390eb0e5.54a95",
-        "type": "http response",
-        "z": "5bdb864b.a911d8",
-        "name": "",
-        "statusCode": "200",
-        "headers": {},
-        "x": 600,
-        "y": 160,
-        "wires": []
     },
     {
         "id": "f613ddd4.9aee8",
@@ -8410,8 +8391,8 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 120,
-        "y": 540,
+        "x": 780,
+        "y": 140,
         "wires": [
             [
                 "d678f07f.b7888"
@@ -8437,8 +8418,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 610,
-        "y": 440,
+        "x": 1150,
+        "y": 120,
         "wires": [
             []
         ]
@@ -8462,8 +8443,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
-        "y": 400,
+        "x": 1160,
+        "y": 80,
         "wires": [
             []
         ]
@@ -8476,8 +8457,8 @@
         "func": "msg.payload = {\n    \"brightness\": msg.data.attributes.brightness,\n    \"rgb_color\": msg.data.attributes.rgb_color,\n    \"effect\": msg.data.attributes.effect\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 440,
-        "y": 400,
+        "x": 980,
+        "y": 80,
         "wires": [
             [
                 "944c1a3b.e066a8"
@@ -8499,8 +8480,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 460,
-        "y": 540,
+        "x": 980,
+        "y": 200,
         "wires": [
             [
                 "320d5b0e.b210e4"
@@ -8529,14 +8510,14 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1040,
-        "y": 700,
+        "x": 740,
+        "y": 480,
         "wires": [
             [
                 "c7e346c9.d5e278"
             ],
             [
-                "d8aab2b0.8b30f"
+                "66c02c6e.9cfbb4"
             ]
         ]
     },
@@ -8544,7 +8525,7 @@
         "id": "c4bd3ea9.f7c19",
         "type": "change",
         "z": "5bdb864b.a911d8",
-        "name": "Get previous",
+        "name": "Get attributes",
         "rules": [
             {
                 "t": "set",
@@ -8559,14 +8540,14 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 850,
-        "y": 700,
+        "x": 560,
+        "y": 480,
         "wires": [
             [
-                "d4ee5d1e.f3c48",
-                "6aa5810.d5e4e8"
+                "d4ee5d1e.f3c48"
             ]
-        ]
+        ],
+        "info": "Parse the attributes of the previous light state"
     },
     {
         "id": "c7e346c9.d5e278",
@@ -8579,8 +8560,8 @@
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": true,
         "mergecontext": "",
-        "x": 1210,
-        "y": 680,
+        "x": 890,
+        "y": 420,
         "wires": [
             []
         ]
@@ -8596,8 +8577,8 @@
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": true,
         "mergecontext": "",
-        "x": 1210,
-        "y": 740,
+        "x": 1010,
+        "y": 480,
         "wires": [
             []
         ]
@@ -8606,12 +8587,12 @@
         "id": "320d5b0e.b210e4",
         "type": "function",
         "z": "5bdb864b.a911d8",
-        "name": "set i",
+        "name": "Set iterator",
         "func": "flow.set(\"i\", 0);\nflow.set(\"done\", false)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 350,
-        "y": 640,
+        "x": 190,
+        "y": 340,
         "wires": [
             [
                 "93f69ff9.9afc8"
@@ -8622,18 +8603,19 @@
         "id": "93f69ff9.9afc8",
         "type": "function",
         "z": "5bdb864b.a911d8",
-        "name": "change rgb",
+        "name": "Cycle colors",
         "func": "const colors = [\n    [255, 0, 0],\n    [255, 63, 0],\n    [255, 127, 0],\n    [0, 255, 0],\n    [0, 191, 255],\n    [0, 0, 255],\n    [255, 0, 191]\n]\n\nlet i = flow.get(\"i\");\n\n// Break flow when done\nif (i >= colors.length - 1) {\n    flow.set(\"done\", true);\n}\n\n// Set message payload\nmsg.payload = {};\nmsg.payload.data = {\n    \"brightness\": 255,\n    \"effect\": \"solid\"\n};\nmsg.payload.data.rgb_color = colors[i];\n\n// Update increment\ni++;\nflow.set(\"i\", i);\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 640,
+        "x": 390,
+        "y": 340,
         "wires": [
             [
                 "75603597.c2ac5c",
                 "1e88f711.6370f9"
             ]
-        ]
+        ],
+        "info": "Cycle through each color defined in `colors`."
     },
     {
         "id": "acc6fa1a.ce1568",
@@ -8644,23 +8626,23 @@
         "propertyType": "flow",
         "rules": [
             {
-                "t": "true"
+                "t": "false"
             },
             {
-                "t": "false"
+                "t": "true"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 490,
-        "y": 780,
+        "x": 370,
+        "y": 480,
         "wires": [
             [
-                "c4bd3ea9.f7c19"
+                "93f69ff9.9afc8"
             ],
             [
-                "93f69ff9.9afc8"
+                "c4bd3ea9.f7c19"
             ]
         ]
     },
@@ -8679,8 +8661,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 610,
-        "y": 700,
+        "x": 590,
+        "y": 400,
         "wires": [
             [
                 "acc6fa1a.ce1568"
@@ -8691,47 +8673,66 @@
         "id": "75603597.c2ac5c",
         "type": "api-call-service",
         "z": "5bdb864b.a911d8",
-        "name": "turn on light",
+        "name": "Set color",
         "server": "a117d285.11d84",
         "service_domain": "light",
         "service": "turn_on",
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 690,
-        "y": 640,
+        "x": 580,
+        "y": 320,
         "wires": [
             []
         ]
     },
     {
-        "id": "6aa5810.d5e4e8",
-        "type": "debug",
+        "id": "e5b926b6.f0c758",
+        "type": "time-range-switch",
         "z": "5bdb864b.a911d8",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 850,
-        "y": 780,
-        "wires": []
+        "name": "7:00am - 10:00pm",
+        "lat": "40.7799",
+        "lon": "-73.94872",
+        "startTime": "7:00",
+        "endTime": "22:00",
+        "startOffset": "",
+        "endOffset": "",
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [
+                "d678f07f.b7888"
+            ],
+            []
+        ]
     },
     {
-        "id": "3bc174b8.31cf2c",
-        "type": "debug",
+        "id": "66c02c6e.9cfbb4",
+        "type": "api-call-service",
         "z": "5bdb864b.a911d8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 690,
-        "y": 320,
+        "name": "On",
+        "server": "a117d285.11d84",
+        "service_domain": "light",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"light.vines\"}",
+        "render_data": true,
+        "mergecontext": "",
+        "x": 890,
+        "y": 500,
+        "wires": [
+            [
+                "d8aab2b0.8b30f"
+            ]
+        ]
+    },
+    {
+        "id": "bfcede81.be25",
+        "type": "comment",
+        "z": "5bdb864b.a911d8",
+        "name": "Rainbow on Habitica task complete",
+        "info": "",
+        "x": 180,
+        "y": 140,
         "wires": []
     }
 ]
