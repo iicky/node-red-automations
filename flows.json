@@ -8482,8 +8482,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 740,
-        "y": 480,
+        "x": 720,
+        "y": 600,
         "wires": [
             [
                 "c7e346c9.d5e278"
@@ -8512,8 +8512,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 560,
-        "y": 480,
+        "x": 540,
+        "y": 600,
         "wires": [
             [
                 "d4ee5d1e.f3c48"
@@ -8532,10 +8532,12 @@
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": true,
         "mergecontext": "",
-        "x": 890,
-        "y": 420,
+        "x": 870,
+        "y": 540,
         "wires": [
-            []
+            [
+                "e207da38.2d2c88"
+            ]
         ]
     },
     {
@@ -8549,10 +8551,12 @@
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": true,
         "mergecontext": "",
-        "x": 890,
-        "y": 500,
+        "x": 870,
+        "y": 620,
         "wires": [
-            []
+            [
+                "e207da38.2d2c88"
+            ]
         ]
     },
     {
@@ -8563,8 +8567,8 @@
         "func": "flow.set(\"i\", 0);\nflow.set(\"done\", false)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 190,
-        "y": 340,
+        "x": 170,
+        "y": 460,
         "wires": [
             [
                 "93f69ff9.9afc8"
@@ -8579,8 +8583,8 @@
         "func": "const colors = [\n    [255, 0, 0],\n    [255, 63, 0],\n    [255, 127, 0],\n    [0, 255, 0],\n    [0, 191, 255],\n    [0, 0, 255],\n    [255, 0, 191]\n]\n\nlet i = flow.get(\"i\");\n\n// Break flow when done\nif (i >= colors.length - 1) {\n    flow.set(\"done\", true);\n}\n\n// Set message payload\nmsg.payload = {};\nmsg.payload.data = {\n    \"brightness\": 255,\n    \"effect\": \"solid\"\n};\nmsg.payload.data.rgb_color = colors[i];\n\n// Update increment\ni++;\nflow.set(\"i\", i);\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
-        "y": 340,
+        "x": 370,
+        "y": 460,
         "wires": [
             [
                 "75603597.c2ac5c",
@@ -8607,8 +8611,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 370,
-        "y": 480,
+        "x": 350,
+        "y": 600,
         "wires": [
             [
                 "93f69ff9.9afc8"
@@ -8633,8 +8637,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 590,
-        "y": 400,
+        "x": 570,
+        "y": 520,
         "wires": [
             [
                 "acc6fa1a.ce1568"
@@ -8652,8 +8656,8 @@
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 580,
-        "y": 320,
+        "x": 560,
+        "y": 440,
         "wires": [
             []
         ]
@@ -8707,8 +8711,98 @@
         "y": 200,
         "wires": [
             [
+                "8f71aa1e.905d98"
+            ]
+        ]
+    },
+    {
+        "id": "e90eb4fa.0ea158",
+        "type": "change",
+        "z": "5bdb864b.a911d8",
+        "name": "Lock",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lock",
+                "pt": "flow",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
                 "320d5b0e.b210e4"
             ]
         ]
+    },
+    {
+        "id": "8f71aa1e.905d98",
+        "type": "switch",
+        "z": "5bdb864b.a911d8",
+        "name": "Locked?",
+        "property": "lock",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [],
+            [
+                "e90eb4fa.0ea158"
+            ]
+        ],
+        "info": "Filter only tasks with positive scores."
+    },
+    {
+        "id": "e207da38.2d2c88",
+        "type": "change",
+        "z": "5bdb864b.a911d8",
+        "name": "Unlock",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lock",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7849fb5.50ec",
+        "type": "comment",
+        "z": "5bdb864b.a911d8",
+        "name": "Block rapid fire task completion",
+        "info": "",
+        "x": 590,
+        "y": 300,
+        "wires": []
     }
 ]
