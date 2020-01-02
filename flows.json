@@ -6543,7 +6543,9 @@
         "x": 190,
         "y": 1220,
         "wires": [
-            []
+            [
+                "112f47cc.bfd6e8"
+            ]
         ]
     },
     {
@@ -8302,9 +8304,7 @@
         "x": 250,
         "y": 180,
         "wires": [
-            [
-                "9d30b90c.1946e8"
-            ],
+            [],
             [
                 "10cbef44.81bc21"
             ]
@@ -8334,12 +8334,9 @@
         "x": 410,
         "y": 200,
         "wires": [
+            [],
             [
-                "9d30b90c.1946e8"
-            ],
-            [
-                "e5b926b6.f0c758",
-                "9d30b90c.1946e8"
+                "e5b926b6.f0c758"
             ]
         ],
         "info": "Filter only tasks with positive scores."
@@ -8351,7 +8348,7 @@
         "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 540,
+        "x": 420,
         "y": 120,
         "wires": [],
         "info": "200 Response to Webhook"
@@ -8464,29 +8461,6 @@
         ]
     },
     {
-        "id": "bf8958af.805bd8",
-        "type": "delay",
-        "z": "5bdb864b.a911d8",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 980,
-        "y": 200,
-        "wires": [
-            [
-                "320d5b0e.b210e4"
-            ]
-        ]
-    },
-    {
         "id": "d4ee5d1e.f3c48",
         "type": "switch",
         "z": "5bdb864b.a911d8",
@@ -8515,7 +8489,7 @@
                 "c7e346c9.d5e278"
             ],
             [
-                "66c02c6e.9cfbb4"
+                "d8aab2b0.8b30f"
             ]
         ]
     },
@@ -8571,12 +8545,12 @@
         "name": "Off",
         "server": "a117d285.11d84",
         "service_domain": "light",
-        "service": "turn_off",
+        "service": "toggle",
         "data": "{\"entity_id\":\"light.vines\"}",
         "render_data": true,
         "mergecontext": "",
-        "x": 1010,
-        "y": 480,
+        "x": 890,
+        "y": 500,
         "wires": [
             []
         ]
@@ -8705,25 +8679,6 @@
         ]
     },
     {
-        "id": "66c02c6e.9cfbb4",
-        "type": "api-call-service",
-        "z": "5bdb864b.a911d8",
-        "name": "On",
-        "server": "a117d285.11d84",
-        "service_domain": "light",
-        "service": "turn_on",
-        "data": "{\"entity_id\":\"light.vines\"}",
-        "render_data": true,
-        "mergecontext": "",
-        "x": 890,
-        "y": 500,
-        "wires": [
-            [
-                "d8aab2b0.8b30f"
-            ]
-        ]
-    },
-    {
         "id": "bfcede81.be25",
         "type": "comment",
         "z": "5bdb864b.a911d8",
@@ -8732,5 +8687,28 @@
         "x": 180,
         "y": 140,
         "wires": []
+    },
+    {
+        "id": "bf8958af.805bd8",
+        "type": "delay",
+        "z": "5bdb864b.a911d8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 980,
+        "y": 200,
+        "wires": [
+            [
+                "320d5b0e.b210e4"
+            ]
+        ]
     }
 ]
