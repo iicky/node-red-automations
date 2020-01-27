@@ -8364,33 +8364,13 @@
         "override_payload": true,
         "override_data": true,
         "entity_id": "light.vines",
-        "x": 810,
-        "y": 200,
+        "x": 510,
+        "y": 300,
         "wires": [
             [
                 "4b71bf37.a2ee9",
                 "b5711e79.540c3",
                 "bf8958af.805bd8"
-            ]
-        ]
-    },
-    {
-        "id": "f613ddd4.9aee8",
-        "type": "inject",
-        "z": "5bdb864b.a911d8",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 780,
-        "y": 140,
-        "wires": [
-            [
-                "d678f07f.b7888"
             ]
         ]
     },
@@ -8413,8 +8393,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1150,
-        "y": 120,
+        "x": 890,
+        "y": 320,
         "wires": [
             []
         ]
@@ -8438,8 +8418,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1160,
-        "y": 80,
+        "x": 900,
+        "y": 280,
         "wires": [
             []
         ]
@@ -8452,8 +8432,8 @@
         "func": "msg.payload = {\n    \"brightness\": msg.data.attributes.brightness,\n    \"rgb_color\": msg.data.attributes.rgb_color,\n    \"effect\": msg.data.attributes.effect\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 980,
-        "y": 80,
+        "x": 720,
+        "y": 280,
         "wires": [
             [
                 "944c1a3b.e066a8"
@@ -8677,7 +8657,7 @@
         "y": 200,
         "wires": [
             [
-                "d678f07f.b7888"
+                "8f71aa1e.905d98"
             ],
             []
         ]
@@ -8707,11 +8687,11 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 980,
-        "y": 200,
+        "x": 680,
+        "y": 360,
         "wires": [
             [
-                "8f71aa1e.905d98"
+                "320d5b0e.b210e4"
             ]
         ]
     },
@@ -8734,11 +8714,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
-        "y": 340,
+        "x": 930,
+        "y": 200,
         "wires": [
             [
-                "320d5b0e.b210e4"
+                "d678f07f.b7888"
             ]
         ]
     },
@@ -8760,8 +8740,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 360,
-        "y": 320,
+        "x": 800,
+        "y": 200,
         "wires": [
             [],
             [
@@ -8801,8 +8781,8 @@
         "z": "5bdb864b.a911d8",
         "name": "Block rapid fire task completion",
         "info": "",
-        "x": 590,
-        "y": 300,
+        "x": 870,
+        "y": 160,
         "wires": []
     }
 ]
