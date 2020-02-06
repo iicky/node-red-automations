@@ -1906,8 +1906,7 @@
         "y": 193,
         "wires": [
             [
-                "ea01825b.f97a1",
-                "93d1e7db.883978"
+                "83a881e8.cd0bc"
             ],
             []
         ]
@@ -1923,7 +1922,7 @@
         "data": "{\"entity_id\":\"switch.headboard\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1380,
+        "x": 1580,
         "y": 260,
         "wires": [
             []
@@ -6328,7 +6327,7 @@
         "data": "{\"entity_id\":\"light.fairy_lights\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1380,
+        "x": 1580,
         "y": 200,
         "wires": [
             []
@@ -8784,5 +8783,25 @@
         "x": 870,
         "y": 160,
         "wires": []
+    },
+    {
+        "id": "83a881e8.cd0bc",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Motion toggle?",
+        "server": "a117d285.11d84",
+        "halt_if": "off",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "switch.bedroom_motion_toggle",
+        "x": 1380,
+        "y": 200,
+        "wires": [
+            [
+                "93d1e7db.883978",
+                "ea01825b.f97a1"
+            ]
+        ]
     }
 ]
