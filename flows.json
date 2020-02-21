@@ -3619,7 +3619,7 @@
         "suspended": false,
         "lat": "40.791",
         "lon": "-73.9256",
-        "ontime": "17:00",
+        "ontime": "sunsetStart",
         "ontopic": "payload",
         "onpayload": "ON",
         "onoffset": 0,
