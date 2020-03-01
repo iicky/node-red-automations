@@ -648,7 +648,7 @@
         "type": "function",
         "z": "e3d5be61.6eb31",
         "name": "Extract source",
-        "func": "raw_source = msg.payload.request.intent.slots.source.value;\n\n// Fix source casing on raw source\nsource_mapper = {\n   'apple tv': 'Apple TV',\n   'ps4': 'PS4',\n   'playstation': 'PS4',\n   'p.s. 4': 'PS4',\n   'game': 'GAME',\n   'pc': 'PC',\n   'fire stick': 'Fire Stick',\n   'am tuner': 'AM Tuner',\n   'fm tuner': 'FM Tuner',\n   'technics': 'Technics',\n   'turntable': 'Technics',\n   'record player': 'Technics',\n   'usb': 'USB'\n}\n\nmsg.payload.data = { \n    \"entity_id\" : \"media_player.receiver\", \n    \"source\" : source_mapper[raw_source.toLowerCase()]\n\n }\n\nreturn msg;",
+        "func": "raw_source = msg.payload.request.intent.slots.source.value;\n\n// Fix source casing on raw source\nsource_mapper = {\n   'apple tv': 'Apple TV',\n   'ps4': 'PS4',\n   'playstation': 'PS4',\n   'p.s. 4': 'PS4',\n   'switch': 'Switch',\n   'nintendo': 'Switch',\n   'nintendo switch': 'Switch',\n   'pc': 'PC',\n   'fire stick': 'Fire Stick',\n   'am tuner': 'AM Tuner',\n   'fm tuner': 'FM Tuner',\n   'technics': 'Technics',\n   'turntable': 'Technics',\n   'record player': 'Technics',\n   'usb': 'USB'\n}\n\nmsg.payload.data = { \n    \"entity_id\" : \"media_player.receiver\", \n    \"source\" : source_mapper[raw_source.toLowerCase()]\n\n }\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 380,
@@ -8276,7 +8276,8 @@
         "y": 180,
         "wires": [
             [
-                "100d90a3.a7452f"
+                "100d90a3.a7452f",
+                "e3e9c4e5.f62148"
             ]
         ]
     },
@@ -8803,5 +8804,19 @@
                 "ea01825b.f97a1"
             ]
         ]
+    },
+    {
+        "id": "e3e9c4e5.f62148",
+        "type": "debug",
+        "z": "5bdb864b.a911d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 280,
+        "y": 280,
+        "wires": []
     }
 ]
