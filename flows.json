@@ -7,16 +7,16 @@
         "info": ""
     },
     {
-        "id": "363f3bc3.b66854",
+        "id": "e3d5be61.6eb31",
         "type": "tab",
-        "label": "Timers",
+        "label": "Alexa | Receiver",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "e3d5be61.6eb31",
+        "id": "363f3bc3.b66854",
         "type": "tab",
-        "label": "Alexa | Receiver",
+        "label": "Timers",
         "disabled": false,
         "info": ""
     },
@@ -73,6 +73,13 @@
         "id": "5bdb864b.a911d8",
         "type": "tab",
         "label": "Habitica",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5cb8169e.c02558",
+        "type": "tab",
+        "label": "Minecraft",
         "disabled": false,
         "info": ""
     },
@@ -203,6 +210,13 @@
         "willTopic": "",
         "willQos": "0",
         "willPayload": ""
+    },
+    {
+        "id": "19df509e.b6e04f",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/minecraft",
+        "wholemsg": "false"
     },
     {
         "id": "2b041670.11152a",
@@ -1903,7 +1917,7 @@
         "payloadval": "0",
         "name": "10min",
         "x": 1210,
-        "y": 193,
+        "y": 240,
         "wires": [
             [
                 "83a881e8.cd0bc"
@@ -1923,7 +1937,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 1580,
-        "y": 260,
+        "y": 307,
         "wires": [
             []
         ]
@@ -2043,7 +2057,8 @@
             [
                 "9c83d9dd.b5b388",
                 "a1359a24.3bf698",
-                "d31d0e2a.03903"
+                "d31d0e2a.03903",
+                "93ba84cf.ecb408"
             ],
             []
         ]
@@ -2080,11 +2095,9 @@
         "qos": "0",
         "broker": "44deb46d.8fe2ec",
         "x": 120,
-        "y": 380,
+        "y": 360,
         "wires": [
-            [
-                "9bbc3b2f.e95368"
-            ]
+            []
         ]
     },
     {
@@ -2122,7 +2135,6 @@
         "y": 380,
         "wires": [
             [
-                "c3563fbb.ff7c7",
                 "6cf11250.e7546c"
             ]
         ]
@@ -3909,8 +3921,8 @@
         "service": "turn_on",
         "data": "{\"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 400,
-        "y": 1020,
+        "x": 280,
+        "y": 1000,
         "wires": [
             []
         ]
@@ -3925,8 +3937,8 @@
         "service": "turn_off",
         "data": "{\"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 410,
-        "y": 1140,
+        "x": 450,
+        "y": 1160,
         "wires": [
             []
         ]
@@ -3942,7 +3954,7 @@
         "data": "{}",
         "mergecontext": "",
         "x": 560,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             []
         ]
@@ -3956,7 +3968,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 400,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "b8941b2d.c00b28"
@@ -3973,8 +3985,8 @@
         "service": "turn_on",
         "data": "{\"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 410,
-        "y": 1060,
+        "x": 530,
+        "y": 1040,
         "wires": [
             []
         ]
@@ -3989,7 +4001,7 @@
         "service": "turn_off",
         "data": "{\"entity_id\": \"group.moodlights\" }",
         "mergecontext": "",
-        "x": 400,
+        "x": 520,
         "y": 1100,
         "wires": [
             []
@@ -4094,9 +4106,7 @@
         "x": 480,
         "y": 440,
         "wires": [
-            [
-                "c3563fbb.ff7c7"
-            ]
+            []
         ]
     },
     {
@@ -5769,7 +5779,7 @@
         "name": "Calavera",
         "topic": "",
         "x": 80,
-        "y": 1300,
+        "y": 1400,
         "wires": [
             [
                 "bc916483.b20948"
@@ -5804,7 +5814,7 @@
         "repair": false,
         "outputs": 3,
         "x": 250,
-        "y": 1300,
+        "y": 1400,
         "wires": [
             [
                 "ab517f13.d0a49"
@@ -5829,7 +5839,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 390,
-        "y": 1260,
+        "y": 1360,
         "wires": [
             []
         ]
@@ -5846,7 +5856,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 390,
-        "y": 1300,
+        "y": 1400,
         "wires": [
             []
         ]
@@ -5862,7 +5872,7 @@
         "data": "{}",
         "mergecontext": "",
         "x": 560,
-        "y": 1340,
+        "y": 1440,
         "wires": [
             []
         ]
@@ -5876,7 +5886,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 400,
-        "y": 1340,
+        "y": 1440,
         "wires": [
             [
                 "4dd6c4be.c1049c"
@@ -5893,7 +5903,7 @@
         "name": "Skull",
         "topic": "",
         "x": 70,
-        "y": 1360,
+        "y": 1460,
         "wires": [
             [
                 "bc916483.b20948"
@@ -6328,7 +6338,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 1580,
-        "y": 200,
+        "y": 247,
         "wires": [
             []
         ]
@@ -7020,7 +7030,9 @@
             [
                 "b2a5a784.1c98e8"
             ],
-            []
+            [
+                "b2a5a784.1c98e8"
+            ]
         ]
     },
     {
@@ -8797,11 +8809,12 @@
         "override_data": true,
         "entity_id": "switch.bedroom_motion_toggle",
         "x": 1380,
-        "y": 200,
+        "y": 247,
         "wires": [
             [
                 "93d1e7db.883978",
-                "ea01825b.f97a1"
+                "ea01825b.f97a1",
+                "7db972b0.f362bc"
             ]
         ]
     },
@@ -8818,5 +8831,87 @@
         "x": 280,
         "y": 280,
         "wires": []
+    },
+    {
+        "id": "8d1b2829.f40098",
+        "type": "websocket in",
+        "z": "5cb8169e.c02558",
+        "name": "minecraft",
+        "server": "19df509e.b6e04f",
+        "client": "",
+        "x": 380,
+        "y": 200,
+        "wires": [
+            [
+                "6681fd70.c8f924"
+            ]
+        ]
+    },
+    {
+        "id": "6681fd70.c8f924",
+        "type": "debug",
+        "z": "5cb8169e.c02558",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7db972b0.f362bc",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "Thai Light Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.thai_light\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1581.5,
+        "y": 378,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "93ba84cf.ecb408",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Already on?",
+        "server": "a117d285.11d84",
+        "halt_if": "on",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "light.fairy_lights",
+        "x": 1250,
+        "y": 180,
+        "wires": [
+            [
+                "d3582e92.318db8"
+            ]
+        ]
+    },
+    {
+        "id": "d3582e92.318db8",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "Thai Light On",
+        "server": "a117d285.11d84",
+        "service_domain": "light",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"light.thai_light\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1440,
+        "y": 180,
+        "wires": [
+            []
+        ]
     }
 ]
