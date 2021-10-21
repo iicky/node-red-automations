@@ -175,6 +175,47 @@
         "env": []
     },
     {
+        "id": "92dc7fe6.0eb9d8",
+        "type": "subflow",
+        "name": "User Home Status",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "98651e76.f28d08"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 680,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "a4c629ce.492588",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 480,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "5291fbbb.261b34",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": []
+    },
+    {
         "id": "a117d285.11d84",
         "type": "server",
         "z": "",
@@ -683,7 +724,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 560,
-        "y": 660,
+        "y": 680,
         "wires": [
             [
                 "c1fd73b0.34e89"
@@ -698,7 +739,7 @@
         "statusCode": "",
         "headers": {},
         "x": 710,
-        "y": 660,
+        "y": 680,
         "wires": []
     },
     {
@@ -747,7 +788,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 560,
-        "y": 800,
+        "y": 820,
         "wires": [
             [
                 "ca9aa129.9da12"
@@ -762,7 +803,7 @@
         "statusCode": "",
         "headers": {},
         "x": 710,
-        "y": 800,
+        "y": 820,
         "wires": []
     },
     {
@@ -3420,62 +3461,6 @@
         "wires": []
     },
     {
-        "id": "1d28d985.996e36",
-        "type": "change",
-        "z": "dc9e57a8.6747d8",
-        "name": "Status?",
-        "rules": [
-            {
-                "t": "set",
-                "p": "mickey_home",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 440,
-        "y": 80,
-        "wires": [
-            [
-                "ff845a05.bb7188",
-                "9baa9ee1.725cd"
-            ]
-        ]
-    },
-    {
-        "id": "774ecd3d.c831b4",
-        "type": "change",
-        "z": "dc9e57a8.6747d8",
-        "name": "Status?",
-        "rules": [
-            {
-                "t": "set",
-                "p": "maggie_home",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 440,
-        "y": 140,
-        "wires": [
-            [
-                "ff845a05.bb7188",
-                "9baa9ee1.725cd"
-            ]
-        ]
-    },
-    {
         "id": "7632d5b0.1e091c",
         "type": "comment",
         "z": "dc9e57a8.6747d8",
@@ -3484,22 +3469,6 @@
         "x": 140,
         "y": 40,
         "wires": []
-    },
-    {
-        "id": "ff845a05.bb7188",
-        "type": "function",
-        "z": "dc9e57a8.6747d8",
-        "name": "Anyone home?",
-        "func": "\n// Returns true if either Mickey or Maggie is home\nmsg.payload = [\n   global.get(\"mickey_home\"),\n   global.get(\"maggie_home\"),\n].some(function(x) { \n    return x === \"home\"\n});\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 600,
-        "y": 100,
-        "wires": [
-            [
-                "ca1c9f69.3b20d"
-            ]
-        ]
     },
     {
         "id": "ca1c9f69.3b20d",
@@ -3520,42 +3489,10 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
-        "y": 100,
+        "x": 1420,
+        "y": 680,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "ff45bd89.9bded",
-        "type": "function",
-        "z": "dc9e57a8.6747d8",
-        "name": "Presence?",
-        "func": "\n// Returns true if either Mickey or Maggie is home\nmsg.payload = (msg.payload > 0.1) ? \"home\" : \"away\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 290,
-        "y": 80,
-        "wires": [
-            [
-                "1d28d985.996e36"
-            ]
-        ]
-    },
-    {
-        "id": "388cb5b7.ec768a",
-        "type": "function",
-        "z": "dc9e57a8.6747d8",
-        "name": "Presence?",
-        "func": "msg.payload = (msg.payload > 0.1) ? \"home\" : \"away\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 290,
-        "y": 140,
-        "wires": [
-            [
-                "774ecd3d.c831b4"
-            ]
         ]
     },
     {
@@ -4008,65 +3945,6 @@
         ]
     },
     {
-        "id": "923a691c.6bafd8",
-        "type": "change",
-        "z": "dc9e57a8.6747d8",
-        "name": "Status?",
-        "rules": [
-            {
-                "t": "set",
-                "p": "junie_home",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 440,
-        "y": 200,
-        "wires": [
-            [
-                "9baa9ee1.725cd"
-            ]
-        ]
-    },
-    {
-        "id": "7c5f63cb.504dfc",
-        "type": "function",
-        "z": "dc9e57a8.6747d8",
-        "name": "Presence?",
-        "func": "msg.payload = (msg.payload > 0.1) ? \"home\" : \"away\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 290,
-        "y": 200,
-        "wires": [
-            [
-                "923a691c.6bafd8"
-            ]
-        ]
-    },
-    {
-        "id": "9baa9ee1.725cd",
-        "type": "function",
-        "z": "dc9e57a8.6747d8",
-        "name": "Anyone home plus guests?",
-        "func": "\n// Returns true if either Mickey or Maggie is home\nmsg.payload = [\n   global.get(\"mickey_home\"),\n   global.get(\"maggie_home\"),\n   global.get(\"juniee_home\"),\n].some(function(x) { \n    return x === \"home\"\n});\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 700,
-        "y": 160,
-        "wires": [
-            [
-                "4a89f821.f97048"
-            ]
-        ]
-    },
-    {
         "id": "4a89f821.f97048",
         "type": "change",
         "z": "dc9e57a8.6747d8",
@@ -4085,8 +3963,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 200,
+        "x": 1380,
+        "y": 780,
         "wires": [
             []
         ]
@@ -4364,60 +4242,6 @@
         "y": 200,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "2fbcdb52.1f0934",
-        "type": "poll-state",
-        "z": "dc9e57a8.6747d8",
-        "name": "Junie Tracker",
-        "server": "a117d285.11d84",
-        "updateinterval": "10",
-        "outputinitially": true,
-        "outputonchanged": false,
-        "entity_id": "sensor.junie_iphone_overall_presence",
-        "x": 110,
-        "y": 200,
-        "wires": [
-            [
-                "7c5f63cb.504dfc"
-            ]
-        ]
-    },
-    {
-        "id": "a27cb2ed.63f79",
-        "type": "poll-state",
-        "z": "dc9e57a8.6747d8",
-        "name": "Maggie Tracker",
-        "server": "a117d285.11d84",
-        "updateinterval": "10",
-        "outputinitially": true,
-        "outputonchanged": false,
-        "entity_id": "sensor.maggie_iphone_overall_presence",
-        "x": 120,
-        "y": 140,
-        "wires": [
-            [
-                "388cb5b7.ec768a"
-            ]
-        ]
-    },
-    {
-        "id": "d58b8fa8.232a5",
-        "type": "poll-state",
-        "z": "dc9e57a8.6747d8",
-        "name": "Mickey Tracker",
-        "server": "a117d285.11d84",
-        "updateinterval": "10",
-        "outputinitially": true,
-        "outputonchanged": false,
-        "entity_id": "sensor.mickey_iphone_overall_presence",
-        "x": 120,
-        "y": 80,
-        "wires": [
-            [
-                "ff45bd89.9bded"
-            ]
         ]
     },
     {
@@ -6488,7 +6312,7 @@
         "to": "",
         "reg": false,
         "x": 440,
-        "y": 380,
+        "y": 320,
         "wires": [
             []
         ]
@@ -6502,7 +6326,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 290,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
                 "1712abb9.9258e4"
@@ -6520,7 +6344,7 @@
         "outputonchanged": false,
         "entity_id": "sensor.mickey_iphone_viacom_presence",
         "x": 120,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
                 "e628ecae.ab544"
@@ -6534,7 +6358,7 @@
         "name": "Is Mickey at his desk?",
         "info": "",
         "x": 140,
-        "y": 340,
+        "y": 280,
         "wires": []
     },
     {
@@ -6552,9 +6376,7 @@
         "x": 190,
         "y": 1220,
         "wires": [
-            [
-                "112f47cc.bfd6e8"
-            ]
+            []
         ]
     },
     {
@@ -8872,8 +8694,8 @@
         "data": "{\"entity_id\":\"switch.thai_light\"}",
         "render_data": false,
         "mergecontext": "",
-        "x": 1581.5,
-        "y": 378,
+        "x": 1580,
+        "y": 360,
         "wires": [
             []
         ]
@@ -8888,7 +8710,7 @@
         "override_topic": true,
         "override_payload": true,
         "override_data": true,
-        "entity_id": "light.fairy_lights",
+        "entity_id": "switch.thai_light",
         "x": 1250,
         "y": 180,
         "wires": [
@@ -8903,13 +8725,559 @@
         "z": "997b60db.958c4",
         "name": "Thai Light On",
         "server": "a117d285.11d84",
-        "service_domain": "light",
+        "service_domain": "switch",
         "service": "turn_on",
-        "data": "{\"entity_id\":\"light.thai_light\"}",
+        "data": "{\"entity_id\":\"switch.thai_light\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 1440,
         "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8233ccbf.fbd01",
+        "type": "poll-state",
+        "z": "dc9e57a8.6747d8",
+        "name": "Mickey Room Presence",
+        "server": "a117d285.11d84",
+        "updateinterval": "5",
+        "outputinitially": true,
+        "outputonchanged": true,
+        "entity_id": "sensor.mickey_room_presence",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "3495ebf1.718e4c"
+            ]
+        ]
+    },
+    {
+        "id": "5bf4e190.e7eff8",
+        "type": "change",
+        "z": "dc9e57a8.6747d8",
+        "name": "Mickey Status?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mickey_home",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 100,
+        "wires": [
+            [
+                "49e40d93.761aac"
+            ]
+        ]
+    },
+    {
+        "id": "2b40aa41.d45e16",
+        "type": "poll-state",
+        "z": "dc9e57a8.6747d8",
+        "name": "Maggie Room Presence",
+        "server": "a117d285.11d84",
+        "updateinterval": "60",
+        "outputinitially": true,
+        "outputonchanged": true,
+        "entity_id": "sensor.maggie_room_presence",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "75132df1.967b6c"
+            ]
+        ]
+    },
+    {
+        "id": "98651e76.f28d08",
+        "type": "switch",
+        "z": "92dc7fe6.0eb9d8",
+        "name": "Home?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "not_home",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 200,
+        "y": 120,
+        "wires": [
+            [
+                "9aecf87a.30847"
+            ],
+            [
+                "8cab835f.494ea8",
+                "5291fbbb.261b34"
+            ]
+        ]
+    },
+    {
+        "id": "8cab835f.494ea8",
+        "type": "change",
+        "z": "92dc7fe6.0eb9d8",
+        "name": "Stop",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "stop",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "a4c629ce.492588"
+            ]
+        ]
+    },
+    {
+        "id": "af9c61b3.3145e8",
+        "type": "change",
+        "z": "dc9e57a8.6747d8",
+        "name": "Maggie Status?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "maggie_home",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 180,
+        "wires": [
+            [
+                "49e40d93.761aac"
+            ]
+        ]
+    },
+    {
+        "id": "5291fbbb.261b34",
+        "type": "change",
+        "z": "92dc7fe6.0eb9d8",
+        "name": "Home",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "home",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9aecf87a.30847",
+        "type": "change",
+        "z": "92dc7fe6.0eb9d8",
+        "name": "Away",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "away",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "a4c629ce.492588"
+            ]
+        ]
+    },
+    {
+        "id": "a4c629ce.492588",
+        "type": "trigger",
+        "z": "92dc7fe6.0eb9d8",
+        "op1": "",
+        "op2": "away",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "30",
+        "extend": false,
+        "units": "s",
+        "reset": "stop",
+        "bytopic": "all",
+        "name": "Away Delay",
+        "x": 530,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "49e40d93.761aac",
+        "type": "function",
+        "z": "dc9e57a8.6747d8",
+        "name": "Anyone home?",
+        "func": "\n// Returns true if either Mickey or Maggie is home\nmsg.payload = [\n   global.get(\"mickey_home\"),\n   global.get(\"maggie_home\"),\n].some(function(x) { \n    return x === \"home\"\n});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 140,
+        "wires": [
+            [
+                "febc4ee.0fab53"
+            ]
+        ]
+    },
+    {
+        "id": "febc4ee.0fab53",
+        "type": "change",
+        "z": "dc9e57a8.6747d8",
+        "name": "Home Status?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "anyone_home",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "75132df1.967b6c",
+        "type": "subflow:92dc7fe6.0eb9d8",
+        "z": "dc9e57a8.6747d8",
+        "name": "Is user home?",
+        "env": [],
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "af9c61b3.3145e8"
+            ],
+            [
+                "af9c61b3.3145e8"
+            ]
+        ]
+    },
+    {
+        "id": "3495ebf1.718e4c",
+        "type": "subflow:92dc7fe6.0eb9d8",
+        "z": "dc9e57a8.6747d8",
+        "name": "Is user home?",
+        "env": [],
+        "x": 340,
+        "y": 100,
+        "wires": [
+            [
+                "5bf4e190.e7eff8"
+            ],
+            [
+                "5bf4e190.e7eff8"
+            ]
+        ]
+    },
+    {
+        "id": "d9f6013c.6326c",
+        "type": "stoptimer",
+        "z": "997b60db.958c4",
+        "duration": "10",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "10min",
+        "x": 810,
+        "y": 1560,
+        "wires": [
+            [
+                "6aba4e86.06bc98"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3e847c06.650184",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Already on?",
+        "server": "a117d285.11d84",
+        "halt_if": "on",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "light.fairy_lights",
+        "x": 990,
+        "y": 1420,
+        "wires": [
+            [
+                "334e6df8.73c792"
+            ]
+        ]
+    },
+    {
+        "id": "18c90817.0c135",
+        "type": "time-range-switch",
+        "z": "997b60db.958c4",
+        "name": "Sunset - Night",
+        "lat": "40.7799",
+        "lon": "-73.94872",
+        "startTime": "sunsetStart",
+        "endTime": "night",
+        "startOffset": "",
+        "endOffset": "",
+        "x": 785,
+        "y": 1487,
+        "wires": [
+            [
+                "d9f6013c.6326c",
+                "3e847c06.650184",
+                "d735af40.8cc1e8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6aba4e86.06bc98",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Motion toggle?",
+        "server": "a117d285.11d84",
+        "halt_if": "off",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "switch.bedroom_motion_toggle",
+        "x": 980,
+        "y": 1560,
+        "wires": [
+            [
+                "ae78d92d.a1c7d8",
+                "da271a2b.2dc37"
+            ]
+        ]
+    },
+    {
+        "id": "a4d50b06.8c6e6",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Motion toggle?",
+        "server": "a117d285.11d84",
+        "halt_if": "off",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "switch.bedroom_motion_toggle",
+        "x": 600,
+        "y": 1487,
+        "wires": [
+            [
+                "18c90817.0c135"
+            ]
+        ]
+    },
+    {
+        "id": "d735af40.8cc1e8",
+        "type": "api-current-state",
+        "z": "997b60db.958c4",
+        "name": "Already on?",
+        "server": "a117d285.11d84",
+        "halt_if": "on",
+        "override_topic": true,
+        "override_payload": true,
+        "override_data": true,
+        "entity_id": "switch.thai_light",
+        "x": 990,
+        "y": 1460,
+        "wires": [
+            [
+                "6ae3deb.dde06a"
+            ]
+        ]
+    },
+    {
+        "id": "ae78d92d.a1c7d8",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "Black Star Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.black_star\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1180,
+        "y": 1540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f112700e.abbab",
+        "type": "switch",
+        "z": "997b60db.958c4",
+        "name": "Motion?",
+        "property": "payload.occupancy",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 1487,
+        "wires": [
+            [
+                "a4d50b06.8c6e6"
+            ]
+        ]
+    },
+    {
+        "id": "95e4db6c.2ce4f8",
+        "type": "json",
+        "z": "997b60db.958c4",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 310,
+        "y": 1487,
+        "wires": [
+            [
+                "f112700e.abbab"
+            ]
+        ]
+    },
+    {
+        "id": "1a0f85f2.9c39f2",
+        "type": "mqtt in",
+        "z": "997b60db.958c4",
+        "name": "Bedroom Motion",
+        "topic": "zigbee2mqtt/bedroom_motion_sensor",
+        "qos": "0",
+        "broker": "44deb46d.8fe2ec",
+        "x": 160,
+        "y": 1487,
+        "wires": [
+            [
+                "95e4db6c.2ce4f8"
+            ]
+        ]
+    },
+    {
+        "id": "b15e6e43.5ab3c8",
+        "type": "comment",
+        "z": "997b60db.958c4",
+        "name": "Turn on bedroom stars",
+        "info": "",
+        "x": 180,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "da271a2b.2dc37",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "White Star Off",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.white_star\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1180,
+        "y": 1580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "334e6df8.73c792",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "Black Star On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.white_star\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1160,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6ae3deb.dde06a",
+        "type": "api-call-service",
+        "z": "997b60db.958c4",
+        "name": "White Star On",
+        "server": "a117d285.11d84",
+        "service_domain": "switch",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"switch.white_star\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 1160,
+        "y": 1460,
         "wires": [
             []
         ]
