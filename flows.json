@@ -9062,7 +9062,7 @@
         "override_data": true,
         "entity_id": "light.fairy_lights",
         "x": 990,
-        "y": 1420,
+        "y": 1400,
         "wires": [
             [
                 "334e6df8.73c792"
@@ -9243,7 +9243,7 @@
         "render_data": false,
         "mergecontext": "",
         "x": 1180,
-        "y": 1580,
+        "y": 1600,
         "wires": [
             []
         ]
@@ -9256,11 +9256,11 @@
         "server": "a117d285.11d84",
         "service_domain": "switch",
         "service": "turn_on",
-        "data": "{\"entity_id\":\"switch.white_star\"}",
+        "data": "{\"entity_id\":\"switch.black_star\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 1160,
-        "y": 1420,
+        "y": 1400,
         "wires": [
             []
         ]
