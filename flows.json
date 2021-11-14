@@ -9060,7 +9060,7 @@
         "override_topic": true,
         "override_payload": true,
         "override_data": true,
-        "entity_id": "light.fairy_lights",
+        "entity_id": "light.black_star",
         "x": 990,
         "y": 1400,
         "wires": [
@@ -9140,7 +9140,7 @@
         "override_topic": true,
         "override_payload": true,
         "override_data": true,
-        "entity_id": "switch.thai_light",
+        "entity_id": "switch.white_star",
         "x": 990,
         "y": 1460,
         "wires": [
