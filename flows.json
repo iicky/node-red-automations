@@ -9060,7 +9060,7 @@
         "override_topic": true,
         "override_payload": true,
         "override_data": true,
-        "entity_id": "light.black_star",
+        "entity_id": "switch.black_star",
         "x": 990,
         "y": 1400,
         "wires": [
@@ -9085,8 +9085,8 @@
         "wires": [
             [
                 "d9f6013c.6326c",
-                "3e847c06.650184",
-                "d735af40.8cc1e8"
+                "d735af40.8cc1e8",
+                "3e847c06.650184"
             ],
             []
         ]
