@@ -7,13 +7,6 @@
         "info": ""
     },
     {
-        "id": "e3d5be61.6eb31",
-        "type": "tab",
-        "label": "Alexa | Receiver",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "363f3bc3.b66854",
         "type": "tab",
         "label": "Timers",
@@ -21,16 +14,9 @@
         "info": ""
     },
     {
-        "id": "ff5da73d.cf2dd8",
+        "id": "fef8dabd.39c1a8",
         "type": "tab",
-        "label": "Alexa | Plants",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "7538960a.bfe8b8",
-        "type": "tab",
-        "label": "Alexa | Smart Home",
+        "label": "Tidbyt",
         "disabled": false,
         "info": ""
     },
@@ -45,7 +31,7 @@
         "id": "850c061.bcd9ef8",
         "type": "tab",
         "label": "Hoplite Automation",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
@@ -59,6 +45,27 @@
         "id": "7a870af1.025c84",
         "type": "tab",
         "label": "LCD 1602",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e3d5be61.6eb31",
+        "type": "tab",
+        "label": "Alexa | Receiver",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7538960a.bfe8b8",
+        "type": "tab",
+        "label": "Alexa | Smart Home",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ff5da73d.cf2dd8",
+        "type": "tab",
+        "label": "Alexa | Plants",
         "disabled": false,
         "info": ""
     },
@@ -3938,31 +3945,6 @@
         "mergecontext": "",
         "x": 520,
         "y": 1100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4a89f821.f97048",
-        "type": "change",
-        "z": "dc9e57a8.6747d8",
-        "name": "Guest Status?",
-        "rules": [
-            {
-                "t": "set",
-                "p": "anyone_home_plus_guests",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1380,
-        "y": 780,
         "wires": [
             []
         ]
@@ -8676,7 +8658,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "x": 580,
         "y": 220,
         "wires": []
@@ -9279,5 +9262,233 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "97aeeb4a.31b358",
+        "type": "http request",
+        "z": "fef8dabd.39c1a8",
+        "name": "Tidbyt Off",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "http://pixlet-docker:3001/push/off",
+        "tls": "",
+        "proxy": "",
+        "authType": "",
+        "x": 460,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4a89f821.f97048",
+        "type": "change",
+        "z": "dc9e57a8.6747d8",
+        "name": "Guest Status?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "anyone_home_plus_guests",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1380,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "19c09be7.f0695c",
+        "type": "mqtt in",
+        "z": "fef8dabd.39c1a8",
+        "name": "tidbyt/state",
+        "topic": "tidbyt/state",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "44deb46d.8fe2ec",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "bf755966.03eca",
+                "dfa1facb.652498"
+            ]
+        ]
+    },
+    {
+        "id": "996a7bf2.0e8dc8",
+        "type": "switch",
+        "z": "fef8dabd.39c1a8",
+        "name": "tidbyt_state?",
+        "property": "tidbyt_state",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ON",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [],
+            [
+                "97aeeb4a.31b358"
+            ]
+        ]
+    },
+    {
+        "id": "41a53525.09f6d4",
+        "type": "inject",
+        "z": "fef8dabd.39c1a8",
+        "name": "10s",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "996a7bf2.0e8dc8"
+            ]
+        ]
+    },
+    {
+        "id": "bf755966.03eca",
+        "type": "change",
+        "z": "fef8dabd.39c1a8",
+        "name": "tidbyt_state",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tidbyt_state",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dfa1facb.652498",
+        "type": "switch",
+        "z": "fef8dabd.39c1a8",
+        "name": "OFF",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "97aeeb4a.31b358"
+            ]
+        ]
+    },
+    {
+        "id": "46b7db83.08045c",
+        "type": "schedex",
+        "z": "fef8dabd.39c1a8",
+        "name": "Timer",
+        "suspended": false,
+        "lat": "40.791",
+        "lon": "-73.9256",
+        "ontime": "7:00",
+        "ontopic": "payload",
+        "onpayload": "ON",
+        "onoffset": 0,
+        "onrandomoffset": 0,
+        "offtime": "22:30",
+        "offtopic": "payload",
+        "offpayload": "OFF",
+        "offoffset": 0,
+        "offrandomoffset": 0,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "sun": true,
+        "x": 130,
+        "y": 380,
+        "wires": [
+            [
+                "586fd5bf.373ff4"
+            ]
+        ]
+    },
+    {
+        "id": "9a43ea9f.995828",
+        "type": "comment",
+        "z": "fef8dabd.39c1a8",
+        "name": "Tidbyt Timer",
+        "info": "",
+        "x": 150,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "586fd5bf.373ff4",
+        "type": "mqtt out",
+        "z": "fef8dabd.39c1a8",
+        "name": "tidbyt/state",
+        "topic": "tidbyt/state",
+        "qos": "",
+        "retain": "true",
+        "broker": "44deb46d.8fe2ec",
+        "x": 310,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "565f51b2.bded1",
+        "type": "comment",
+        "z": "fef8dabd.39c1a8",
+        "name": "Tidbyt Power",
+        "info": "",
+        "x": 150,
+        "y": 100,
+        "wires": []
     }
 ]
