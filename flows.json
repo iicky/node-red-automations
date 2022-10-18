@@ -31,7 +31,7 @@
         "id": "850c061.bcd9ef8",
         "type": "tab",
         "label": "Hoplite Automation",
-        "disabled": true,
+        "disabled": false,
         "info": ""
     },
     {
@@ -9359,11 +9359,11 @@
         "id": "41a53525.09f6d4",
         "type": "inject",
         "z": "fef8dabd.39c1a8",
-        "name": "10s",
+        "name": "7s",
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "10",
+        "repeat": "7",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -9489,6 +9489,16 @@
         "info": "",
         "x": 150,
         "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8807da6d.531ae",
+        "type": "comment",
+        "z": "363f3bc3.b66854",
+        "name": "Lava Lamp Safety Timer",
+        "info": "",
+        "x": 150,
+        "y": 1080,
         "wires": []
     }
 ]
