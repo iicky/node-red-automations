@@ -4330,7 +4330,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "volume_up",
-        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 770,
@@ -4347,7 +4347,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "volume_down",
-        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 780,
@@ -4365,23 +4365,6 @@
         "x": 190,
         "y": 160,
         "wires": []
-    },
-    {
-        "id": "b2271cbc.6c34a",
-        "type": "api-call-service",
-        "z": "fb14b77d.472098",
-        "name": "Welcome home!",
-        "server": "a117d285.11d84",
-        "service_domain": "tts",
-        "service": "google_say",
-        "data": "{\"entity_id\":\"media_player.living_room\",\"message\":\"Welcome home Michael!\"}",
-        "render_data": false,
-        "mergecontext": "",
-        "x": 320,
-        "y": 740,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "6a473b37.d41684",
@@ -4408,7 +4391,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "select_source",
-        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 940,
@@ -4425,7 +4408,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "shuffle_set",
-        "data": "{\"entity_id\":\"media_player.living_room\",\"shuffle\":\"true\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\",\"shuffle\":\"true\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 1050,
@@ -4442,7 +4425,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "media_pause",
-        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 410,
@@ -4459,7 +4442,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "shuffle_set",
-        "data": "{\"entity_id\":\"media_player.living_room\",\"shuffle\":\"false\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\",\"shuffle\":\"false\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 310,
@@ -4476,7 +4459,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "media_next_track",
-        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 910,
@@ -6212,7 +6195,7 @@
         "override_topic": true,
         "override_payload": true,
         "override_data": true,
-        "entity_id": "media_player.living_room",
+        "entity_id": "media_player.sonos_living_room",
         "x": 580,
         "y": 280,
         "wires": [
@@ -6263,7 +6246,7 @@
         "server": "a117d285.11d84",
         "service_domain": "media_player",
         "service": "media_play",
-        "data": "{\"entity_id\":\"media_player.living_room\"}",
+        "data": "{\"entity_id\":\"media_player.sonos_living_room\"}",
         "render_data": false,
         "mergecontext": "",
         "x": 910,
@@ -6809,35 +6792,6 @@
         ]
     },
     {
-        "id": "8ab0bc55.7f421",
-        "type": "switch",
-        "z": "363f3bc3.b66854",
-        "name": "Anyone home?",
-        "property": "anyone_home",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "true"
-            },
-            {
-                "t": "false"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 240,
-        "y": 100,
-        "wires": [
-            [
-                "b2a5a784.1c98e8"
-            ],
-            [
-                "b2a5a784.1c98e8"
-            ]
-        ]
-    },
-    {
         "id": "de38557d.f89e88",
         "type": "inject",
         "z": "363f3bc3.b66854",
@@ -6853,7 +6807,7 @@
         "y": 100,
         "wires": [
             [
-                "8ab0bc55.7f421"
+                "b2a5a784.1c98e8"
             ]
         ]
     },
