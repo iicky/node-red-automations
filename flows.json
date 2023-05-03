@@ -2192,7 +2192,7 @@
         "type": "switch",
         "z": "997b60db.958c4",
         "name": "Motion?",
-        "property": "payload.occupancy",
+        "property": "payload",
         "propertyType": "msg",
         "rules": [
             {
